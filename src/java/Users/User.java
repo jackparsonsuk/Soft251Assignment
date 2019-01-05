@@ -9,7 +9,7 @@ package Users;
  *
  * @author Jack
  */
-public abstract class User {
+public abstract class User implements java.io.Serializable{
 
     public String getDoctorID() {
         return doctorID;
@@ -59,11 +59,11 @@ public abstract class User {
         this.DOB = DOB;
     }
 
-    public boolean isGender() {
+    public String isGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
     String doctorID;
@@ -72,6 +72,6 @@ public abstract class User {
     String lastName;
     String address;
     String DOB;
-    boolean gender;
+    String gender;
 }
 

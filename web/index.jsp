@@ -8,17 +8,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+               
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <%@page import="Users.*"%>
+        <%@page import="Serverlets.*"%>
+        <%@page import="java.io.*"%>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <%
-            Doctor doc = new Doctor();
-            doc.setFirstName("Harry");
-        %>
+
+       
         
-        Doctors name: <%= doc.getFirstName() %>
+        <h1>Home</h1>
+        <a href="CreateDoctor.jsp"><button>Create Doctor</button></a>
+
     </body>
 </html>

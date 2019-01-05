@@ -10,9 +10,27 @@ import Other.*;
  *
  * @author Jack
  */
-public class Doctor extends User{
+public class Doctor extends User implements java.io.Serializable{
 
-    Double Rating;
+    Double Rating = 0d;
+    int numberOfRating = 0;
+    public Doctor(){
+        
+    }
+    public Doctor(String ID, String Password, String firstName, String lastName, String address, String DOB, String gender){
+    this.doctorID = ID;
+    this.Password = Password;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.address = address;
+    this.DOB = DOB;
+    this.gender = gender;
+    
+
+    }
+
+
+    
     
     public void viewAppoitments(){
     
@@ -28,8 +46,13 @@ public class Doctor extends User{
     public void orderMedicine(Medicine med){
     
     }
-    public void viewRating(){
-    
+    public void calculateRating(Double rating){
+    numberOfRating++;
+    Rating  = Rating +((rating - Rating) / numberOfRating);
+
+    }
+    public double viewRating(){
+    return Rating;
     }
 
     
