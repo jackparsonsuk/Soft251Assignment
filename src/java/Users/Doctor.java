@@ -5,6 +5,15 @@
  */
 package Users;
 import Other.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +27,7 @@ public class Doctor extends User implements java.io.Serializable{
         
     }
     public Doctor(String ID, String Password, String firstName, String lastName, String address, String DOB, String gender){
-    this.doctorID = ID;
+    this.ID = ID;
     this.Password = Password;
     this.firstName = firstName;
     this.lastName = lastName;
@@ -54,6 +63,75 @@ public class Doctor extends User implements java.io.Serializable{
     public double viewRating(){
     return Rating;
     }
+    
+    
+    
+    
+    
+     public void saveDoctor(Doctor inDoctor){
+        ArrayList<Doctor> cur = readDoctor();
+        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser")){
+        ObjectOutputStream outs = new ObjectOutputStream(fileOut);
+        cur.add(inDoctor);
+        outs.writeObject(cur);
+        outs.close();
+        
+        }
+        catch(IOException i){
+            i.printStackTrace();
+        }
+    }
+    
+     
+     
+    public ArrayList<Doctor> readDoctor(){
+    ArrayList<Doctor> doctors = new ArrayList<>();
+    
+    try{
+        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser");
+        ObjectInputStream ins = new ObjectInputStream(fileIn);
+        doctors = (ArrayList<Doctor>)ins.readObject();
+        fileIn.close();
+        ins.close();
+    }
+    catch(IOException i){
+    i.printStackTrace();
+    return doctors;
+    }
+    catch (ClassNotFoundException c) {
+         System.out.println("Employee class not found");
+         c.printStackTrace();
+         return doctors;
+      }
+        return doctors;
+    }
+    public void removeDoctor(Doctor inDoc){
+        ArrayList<Doctor> doctors = readDoctor();
+        for (int i = 0; i < doctors.size(); i++) {
+            if (doctors.get(i).getID().equals(inDoc.getID())) {
+                doctors.remove(i);
+                   
+            }
+        }
+    
+        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser")){
+                    ObjectOutputStream outs = new ObjectOutputStream(fileOut);
+        
+                    outs.writeObject(doctors);
+                    fileOut.close();
+                    outs.close();
+        
+                    }   
+                        catch(IOException io){
+                        io.printStackTrace();
+                    }
+        
+        
+    }
+         
+         
+        
+    
 
     
     

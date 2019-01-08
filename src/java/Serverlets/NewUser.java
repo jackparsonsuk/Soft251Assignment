@@ -33,65 +33,45 @@ public class NewUser extends HttpServlet {
             throws ServletException, IOException {
         
         
-        String firstName = request.getParameter("first");
+            String firstName = request.getParameter("first");
             String id = request.getParameter("ID");
             String pass = request.getParameter("Pass");
             String lastName = request.getParameter("Last");
             String address = request.getParameter("address");
             String DOB = request.getParameter("dob");
             String gender = request.getParameter("Gender");
+            
             if (id.charAt(0) == 'D') {
-            
+            Doctor doc = new Doctor(id,pass,firstName,lastName,address,DOB,gender);
+             doc.saveDoctor(doc);
             }
-             Doctor doc = new Doctor(id,pass,firstName,lastName,address,DOB,gender);
-             ArrayList<Doctor> Docs = new ArrayList<>();
-            Docs.add(doc);
-             ser(Docs);
+            if (id.charAt(0) == 'A') {
+            Admin admin = new Admin(id,pass,firstName,lastName,address,DOB,gender);
+             admin.saveAdmin(admin);
+            }
+            if (id.charAt(0) == 'P') {
+            Patient pat = new Patient(id,pass,firstName,lastName,address,DOB,gender);
+             pat.savePatient(pat);
+            }
+            if (id.charAt(0) == 'S') {
+            Users.Secretary sec = new Users.Secretary(id,pass,firstName,lastName,address,DOB,gender);
+             sec.saveSecretary(sec);
+            }
+            
              
-            ArrayList<Doctor> savedDoc = unSer();
-            response.sendRedirect("welcome.jsp");
-            HttpSession session = request.getSession();
-            
-            session.setAttribute("Dingus", savedDoc.get(1).getDoctorID());
-            session.setAttribute("Bangus", pass);
-            session.setAttribute("Angus", savedDoc.get(0).getAddress());
+             
+             
+
+
+            response.sendRedirect("CreateDoctor.jsp");
+//            HttpSession session = request.getSession();
+//            
+//            session.setAttribute("Dingus", savedDoc.get(1).getDoctorID());
+//            session.setAttribute("Bangus", pass);
+//            session.setAttribute("Angus", savedDoc.get(0).getAddress());
     }
     
-    
-    public void ser(ArrayList<Doctor> inDoc){
-    ArrayList<Doctor> cur = unSer();
-            try{
-            try (FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser")) {
-                ObjectOutputStream outs = new ObjectOutputStream(fileOut);
-                
-                cur.add(inDoc.get(0));
-                outs.writeObject(cur);
-                outs.close();
-            }
-            }
-            catch(IOException i){
-            i.printStackTrace();
-            }
-    }
-    
-    public ArrayList<Doctor> unSer(){
-        ArrayList<Doctor> docs = new ArrayList<>();
-        try{
-            FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser");
-            ObjectInputStream ins = new ObjectInputStream(fileIn);
-            docs =   (ArrayList<Doctor>) ins.readObject();
-        }
-          catch (IOException i) {
-         i.printStackTrace();
-         return docs;
-      } catch (ClassNotFoundException c) {
-         System.out.println("Employee class not found");
-         c.printStackTrace();
-         return docs;
-      }
-      
-     return docs;   
-    }
+
 
   
 

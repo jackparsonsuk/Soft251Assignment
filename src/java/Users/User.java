@@ -11,12 +11,12 @@ package Users;
  */
 public abstract class User implements java.io.Serializable{
 
-    public String getDoctorID() {
-        return doctorID;
+    public String getID() {
+        return ID;
     }
 
-    public void setDoctorID(String doctorID) {
-        this.doctorID = doctorID;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getPassword() {
@@ -66,7 +66,7 @@ public abstract class User implements java.io.Serializable{
     public void setGender(String gender) {
         this.gender = gender;
     }
-    String doctorID;
+    String ID;
     String Password;
     String firstName;
     String lastName;

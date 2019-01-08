@@ -3,13 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Other/Appotment.java</file>
-            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Other/Medicine.java</file>
+            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Serverlets/NewUser.java</file>
+            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Serverlets/Login.java</file>
             <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Users/User.java</file>
-            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/web/index.jsp</file>
-            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Users/Secretary.java</file>
             <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Users/Patient.java</file>
+            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/web/login.jsp</file>
+            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Other/Appointment.java</file>
+            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Serverlets/Secretary.java</file>
+            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/web/PatientPanel.jsp</file>
+            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Users/Secretary.java</file>
             <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Users/Admin.java</file>
+            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/web/AdminPanel.jsp</file>
+            <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/web/SecretaryPage.jsp</file>
             <file>file:/C:/Users/Jack/Documents/NetBeansProjects/Soft251Assignment/src/java/Users/Doctor.java</file>
         </group>
     </open-files>
