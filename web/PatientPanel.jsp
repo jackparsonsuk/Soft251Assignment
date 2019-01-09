@@ -71,6 +71,28 @@
                 
             </select>
         <input type="submit" value="Create Appointment"/>
+        
+                </form>
+        <h2> Rate your doctor</h2>
+        <form action="PatientServlet">
+            
+             <select name="RateDoc">
+                <%
+                    for (int i = 0; i < docs.size(); i++) {
+                        %>
+                        <option value="<%=docs.get(i).getID()%>"> <%=docs.get(i).getID()%> <%=docs.get(i).viewRating()%> </option>
+                        <%
+                            
+                        }
+                
+                
+                
+                %>
+            
+             </select>
+                <input type="Text" name="Rating">
+                <input type="submit" value="Rate"/>
+        </form>
 
     </body>
 </html>

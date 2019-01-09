@@ -59,7 +59,7 @@ public class Secretary extends User {
             }
         }
     
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Secretarys.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Secretarys.ser")){
                     ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         
                     outs.writeObject(secs);
@@ -73,7 +73,7 @@ public class Secretary extends User {
     
     public void saveSecretary(Secretary inSecretary){
         ArrayList<Secretary> cur = readSecretary();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Secretarys.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Secretarys.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         cur.add(inSecretary);
         outs.writeObject(cur);
@@ -91,7 +91,7 @@ public class Secretary extends User {
     ArrayList<Secretary> secretarys = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Secretarys.ser");
+        FileInputStream fileIn = new FileInputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Secretarys.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         secretarys = (ArrayList<Secretary>)ins.readObject();
         ins.close();

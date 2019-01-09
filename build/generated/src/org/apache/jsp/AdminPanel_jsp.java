@@ -44,51 +44,36 @@ public final class AdminPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        <h1>Hello World!</h1>\n");
-      out.write("        <h2> Remove a Doctor</h2>\n");
-      out.write("        <form action=\"");
- 
-        String drId = request.getParameter("Doctors");
-        Doctor d = new Doctor();
-        ArrayList<Doctor> docs = d.readDoctor();
-            for(int x = 0; x<docs.size(); x++){
-                if (docs.get(x).getID().equals(drId)) {
-                        d.removeDoctor(docs.get(x));
-                    }
-            }
-        
-        
-        
-        
-        
-        
-            
-      out.write("\" method=\"POST\">\n");
-      out.write("        \n");
-      out.write("            <select name=\"Doctors\">\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <title>JSP Page</title>\r\n");
+      out.write("    </head>\r\n");
+      out.write("    <body>\r\n");
+      out.write("        <h1>Hello World!</h1>\r\n");
+      out.write("        <h2> Remove a Doctor</h2>\r\n");
+      out.write("        <form action=\"AdminServlet\" >\r\n");
+      out.write("        \r\n");
+      out.write("            <select name=\"Doctors\">\r\n");
       out.write("                ");
 
+                    Doctor d = new Doctor();
+                    ArrayList<Doctor> docs = d.readDoctor();
                     for (int i = 0; i < docs.size(); i++) {
                         
-      out.write("\n");
+      out.write("\r\n");
       out.write("                        <option value=\"");
       out.print(docs.get(i).getID());
       out.write("\"> ");
       out.print(docs.get(i).getID());
-      out.write(" </option>\n");
+      out.write(" </option>\r\n");
       out.write("                        ");
 
                             
@@ -97,46 +82,31 @@ public final class AdminPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
                 
                 
                 
-      out.write("\n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("            </select>\n");
-      out.write("        <input type=\"submit\" value=\"Remove\"/>\n");
-      out.write("        \n");
-      out.write("    </form>\n");
-      out.write("        <h2> Remove a Secretary</h2>\n");
-      out.write("        <form action=\"");
- 
-        String secId = request.getParameter("Secs");
-        Secretary s = new Secretary();
-        ArrayList<Secretary> secs = s.readSecretary();
-            for(int z = 0; z<secs.size(); z++){
-                if (secs.get(z).getID().equals(secId)) {
-                        s.removeSecretary(secs.get(z));
-                    }
-            }
-        
-        
-        
-        
-        
-        
-            
-      out.write("\" method=\"POST\">\n");
-      out.write("        \n");
-      out.write("            <select name=\"Secs\">\n");
+      out.write("\r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("            </select>\r\n");
+      out.write("        <input type=\"submit\" value=\"Remove\"/>\r\n");
+      out.write("        \r\n");
+      out.write("    </form>\r\n");
+      out.write("        <h2> Remove a Secretary</h2>\r\n");
+      out.write("        <form action=\"AdminServlet\">\r\n");
+      out.write("        \r\n");
+      out.write("            <select name=\"Secs\">\r\n");
       out.write("                ");
 
+                    Secretary sec = new Secretary();
+                    ArrayList<Secretary> secs = sec.readSecretary();
                     for (int v = 0; v < secs.size(); v++) {
                         
-      out.write("\n");
+      out.write("\r\n");
       out.write("                        <option value=\"");
       out.print(secs.get(v).getID());
       out.write("\"> ");
       out.print(secs.get(v).getID());
-      out.write(" </option>\n");
+      out.write(" </option>\r\n");
       out.write("                        ");
 
                             
@@ -145,47 +115,29 @@ public final class AdminPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
                 
                 
                 
-      out.write("\n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("                a\n");
-      out.write("            </select>\n");
-      out.write("        <input type=\"submit\" value=\"Remove\"/>\n");
-      out.write("        \n");
-      out.write("    </form>\n");
-      out.write("                <form action=\"\n");
-      out.write("                      ");
- String dID = request.getParameter("DocRating"); 
-                      for(int z = 0; z<docs.size(); z++)
-                      
-                       if (docs.get(z).getID().equals(dID)) {
-                           docs.get(z).calculateRating(5d);
-                        request.setAttribute("Rating", docs.get(z).viewRating());
-                    }
-                      
-                      
-      out.write("\n");
-      out.write("                      \n");
-      out.write("                      \n");
-      out.write("                      \n");
-      out.write("                      \n");
-      out.write("                      \n");
-      out.write("                      \n");
-      out.write("                      \">\n");
-      out.write("                    \n");
-      out.write("                    <select name=\"DocRating\">\n");
+      out.write("\r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("                a\r\n");
+      out.write("            </select>\r\n");
+      out.write("        <input type=\"submit\" value=\"Remove\"/>\r\n");
+      out.write("        \r\n");
+      out.write("    </form>\r\n");
+      out.write("                <form action=\"AdminServlet\">\r\n");
+      out.write("                    \r\n");
+      out.write("                    <select name=\"DocRating\">\r\n");
       out.write("                ");
 
                     for (int i = 0; i < docs.size(); i++) {
                         
-      out.write("\n");
+      out.write("\r\n");
       out.write("                        <option value=\"");
       out.print(docs.get(i).getID());
       out.write("\"> ");
       out.print(docs.get(i).getID());
-      out.write(" </option>\n");
-      out.write("                        \n");
+      out.write(" </option>\r\n");
+      out.write("                        \r\n");
       out.write("                        ");
 
                             
@@ -194,22 +146,22 @@ public final class AdminPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
                 
                 
                 
-      out.write("\n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("            </select>\n");
-      out.write("                    <input type=\"submit\" value=\"Remove\"/>\n");
-      out.write("                    \n");
-      out.write("                    \n");
-      out.write("                    \n");
-      out.write("                </form>\n");
+      out.write("\r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("            </select>\r\n");
+      out.write("                    <input type=\"submit\" value=\"Rating?\"/>\r\n");
+      out.write("                    \r\n");
+      out.write("                    \r\n");
+      out.write("                    \r\n");
+      out.write("                </form>\r\n");
       out.write("        ");
       out.print( request.getAttribute("Rating") );
-      out.write("\n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("    </body>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

@@ -45,6 +45,8 @@ public class Secretary extends HttpServlet {
         
         
     }
+    public void testMe(){
+    }
 
 
 

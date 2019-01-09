@@ -47,26 +47,26 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        <h1>Paitent</h1>\n");
-      out.write("        \n");
-      out.write("        \n");
-      out.write("        <h2>Doctors</h2>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <title>JSP Page</title>\r\n");
+      out.write("    </head>\r\n");
+      out.write("    <body>\r\n");
+      out.write("        <h1>Paitent</h1>\r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        <h2>Doctors</h2>\r\n");
       out.write("                <form action=\"");
  
         
@@ -98,21 +98,21 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
         
         
             
-      out.write("\" method=\"POST\">\n");
+      out.write("\" method=\"POST\">\r\n");
       out.write("        ");
       out.print(session.getAttribute("ID"));
-      out.write("\n");
-      out.write("            <select name=\"Doctors\">\n");
+      out.write("\r\n");
+      out.write("            <select name=\"Doctors\">\r\n");
       out.write("                ");
 
                     for (int i = 0; i < docs.size(); i++) {
                         
-      out.write("\n");
+      out.write("\r\n");
       out.write("                        <option value=\"");
       out.print(docs.get(i).getID());
       out.write("\"> ");
       out.print(docs.get(i).getID());
-      out.write(" </option>\n");
+      out.write(" </option>\r\n");
       out.write("                        ");
 
                             
@@ -121,16 +121,48 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
                 
                 
                 
-      out.write("\n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("                \n");
-      out.write("            </select>\n");
-      out.write("        <input type=\"submit\" value=\"Create Appointment\"/>\n");
-      out.write("\n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("                \r\n");
+      out.write("            </select>\r\n");
+      out.write("        <input type=\"submit\" value=\"Create Appointment\"/>\r\n");
+      out.write("        \r\n");
+      out.write("                </form>\r\n");
+      out.write("        <h2> Rate your doctor</h2>\r\n");
+      out.write("        <form action=\"PatientServlet\">\r\n");
+      out.write("            \r\n");
+      out.write("             <select name=\"RateDoc\">\r\n");
+      out.write("                ");
+
+                    for (int i = 0; i < docs.size(); i++) {
+                        
+      out.write("\r\n");
+      out.write("                        <option value=\"");
+      out.print(docs.get(i).getID());
+      out.write("\"> ");
+      out.print(docs.get(i).getID());
+      out.write(' ');
+      out.print(docs.get(i).viewRating());
+      out.write(" </option>\r\n");
+      out.write("                        ");
+
+                            
+                        }
+                
+                
+                
+                
+      out.write("\r\n");
+      out.write("            \r\n");
+      out.write("             </select>\r\n");
+      out.write("                <input type=\"Text\" name=\"Rating\">\r\n");
+      out.write("                <input type=\"submit\" value=\"Rate\"/>\r\n");
+      out.write("        </form>\r\n");
+      out.write("\r\n");
+      out.write("    </body>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

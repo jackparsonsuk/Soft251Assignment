@@ -58,6 +58,7 @@ public class Doctor extends User implements java.io.Serializable{
     public void calculateRating(Double rating){
     numberOfRating++;
     Rating  = Rating +((rating - Rating) / numberOfRating);
+    saveDoctor(this);
 
     }
     public double viewRating(){
@@ -70,8 +71,14 @@ public class Doctor extends User implements java.io.Serializable{
     
      public void saveDoctor(Doctor inDoctor){
         ArrayList<Doctor> cur = readDoctor();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Doctors.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
+        
+            for (int i = 0; i < cur.size(); i++) {
+               if (cur.get(i).getID().equals(inDoctor.getID())) {
+                    cur.remove(i);
+                } 
+            }
         cur.add(inDoctor);
         outs.writeObject(cur);
         outs.close();
@@ -88,7 +95,7 @@ public class Doctor extends User implements java.io.Serializable{
     ArrayList<Doctor> doctors = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser");
+        FileInputStream fileIn = new FileInputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Doctors.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         doctors = (ArrayList<Doctor>)ins.readObject();
         fileIn.close();
@@ -114,7 +121,7 @@ public class Doctor extends User implements java.io.Serializable{
             }
         }
     
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Doctors.ser")){
                     ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         
                     outs.writeObject(doctors);
@@ -128,6 +135,22 @@ public class Doctor extends User implements java.io.Serializable{
         
         
     }
+    public Doctor getDoctor(String doctorID){
+        Doctor d = new Doctor();
+     ArrayList<Doctor> docs = d.readDoctor();
+            for(int x = 0; x<docs.size(); x++){
+                if (docs.get(x).getID().equals(doctorID)) {
+                    System.out.println("FOUND DOCTOR -----------------------------------------------------------------");
+                        return docs.get(x);
+                        
+                    }
+                }
+                System.out.println("NO DOCTOR FOUND -----------------------------------------------------------------");
+              return null;
+            }
+    
+  
+    }
          
          
         
@@ -135,4 +158,4 @@ public class Doctor extends User implements java.io.Serializable{
 
     
     
-}
+
