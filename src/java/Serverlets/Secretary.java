@@ -39,14 +39,35 @@ public class Secretary extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            String sid = request.getParameter("unApproved");
+            String apoints = request.getParameter("unAppoinments");
 
-        ArrayList<Patient> p = new ArrayList<>();
-        request.setAttribute("pat", p);
+        if (!(sid == null)) {
+                  Patient p  = new Patient();
+         ArrayList<Patient> pats =p.readPatient();
+         Users.Secretary sec = new Users.Secretary();
+         Patient realP = p.getPaitent(sid);
+        sec.approvePatientAccount(realP);
+        p.savePatient(realP); 
+        }
+        
+                
+
+        if (!(apoints == null)) {
+            Other.Appointment ap = new Other.Appointment();
+            
+            Other.Appointment realAp = ap.getAppointment(apoints);
+            Users.Secretary sec = new Users.Secretary();
+            sec.createAppoitment(realAp);
+            ap.SaveAppointment(realAp);
+        } 
+        
+
+         
         
         
     }
-    public void testMe(){
-    }
+
 
 
 

@@ -113,5 +113,16 @@ public class Patient extends User{
       }
         return patients;
     }
+    public Patient getPaitent(String PaitentID){
+        ArrayList<Patient> pats = readPatient();
+        for(int x = 0; x<pats.size(); x++){
+                if (pats.get(x).getID().equals(PaitentID)) {
+                        
+                        return pats.get(x);
+                    }
+            }
+        Patient patE = new Patient();
+        return patE;
+    }
     
 }

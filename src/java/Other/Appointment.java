@@ -84,6 +84,7 @@ public class Appointment implements java.io.Serializable{
         cur.add(ap);
         outs.writeObject(cur);
         outs.close();
+        fileOut.close();
         
         }
         catch(IOException i){
@@ -112,6 +113,20 @@ public class Appointment implements java.io.Serializable{
          return appointments;
       }
         return appointments;
+    }
+    public Appointment getAppointment(String AppointmentID){
+        ArrayList<Appointment> aps = new ArrayList<>();
+        aps = readAppointment();
+        Appointment realAp;
+        for(int x = 0; x <aps.size(); x++){
+                    if (aps.get(x).getAppointmentID().equals(AppointmentID)) {
+                        realAp = aps.get(x);
+                           return realAp;
+                        }
+                }
+        Appointment apE = new Appointment();
+        return apE;
+        
     }
     
     

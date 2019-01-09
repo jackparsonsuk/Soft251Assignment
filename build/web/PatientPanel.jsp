@@ -22,39 +22,13 @@
         
         
         <h2>Doctors</h2>
-                <form action="<% 
-        
-        String drId = request.getParameter("Doctors");
-        Doctor d = new Doctor();
-        Patient p = new Patient();
-        ArrayList<Doctor> docs = d.readDoctor();
-        ArrayList<Patient> pats = p.readPatient();
-        Appointment ap = new Appointment();
-            for(int x = 0; x<docs.size(); x++){
-                if (docs.get(x).getID().equals(drId)) {
-                        ap.setDoc(docs.get(x));
-                    }
-            }
-            
-            for(int x = 0; x<pats.size(); x++){
-                if (pats.get(x).getID().equals(session.getAttribute("ID"))) {
-                        
-                        ap.setPat(pats.get(x));
-                    }
-            }
-            String uniqueID = UUID.randomUUID().toString();
-            ap.setAppointmentID(uniqueID);
-            ap.SaveAppointment(ap);
-        
-        
-        
-        
-        
-        
-            %>" method="POST">
+                <form action="
+                      
+        PatientServlet" >
         <%=session.getAttribute("ID")%>
             <select name="Doctors">
-                <%
+                <%          Doctor d = new Doctor();
+                            ArrayList<Doctor> docs = d.readDoctor();
                     for (int i = 0; i < docs.size(); i++) {
                         %>
                         <option value="<%=docs.get(i).getID()%>"> <%=docs.get(i).getID()%> </option>
@@ -78,13 +52,15 @@
             
              <select name="RateDoc">
                 <%
-                    for (int i = 0; i < docs.size(); i++) {
+
+                    ArrayList<Doctor> newDocs = d.readDoctor();
+                    for (int i = 0; i < newDocs.size(); i++) {
                         %>
-                        <option value="<%=docs.get(i).getID()%>"> <%=docs.get(i).getID()%> <%=docs.get(i).viewRating()%> </option>
+                        <option value="<%=newDocs.get(i).getID()%>"> <%=newDocs.get(i).getID()%> <%=newDocs.get(i).viewRating()%> </option>
                         <%
                             
                         }
-                
+                System.out.println("Rating");
                 
                 
                 %>
@@ -93,6 +69,57 @@
                 <input type="Text" name="Rating">
                 <input type="submit" value="Rate"/>
         </form>
+                <h2>Your appointments</h2>
+                <table>
+                    <%
+                        Appointment tempAP = new Appointment();
+                        ArrayList<Appointment> aps = tempAP.readAppointment();
+                        for (int i = 0; i < aps.size(); i++) {
+                            if (aps.get(i).getPat().getID().equals(session.getAttribute("ID"))) {
+                                    
+                                
+                        %>
+                    <th>
+                        <%= aps.get(i).getDoc().getID()%>
+                    </th>
+                    <td>
+                        <%= aps.get(i).getPat().getID() %>
+                        
+                    </td>
+                    <%
+                        }
+                            }
+                        %>
+                    
+                    
+                </table>
 
+                        
+                        
+                        <h2> Review your doctor!</h2>
+                        <form action="PatientServlet">
+            
+             <select name="ReviewDoc">
+                <%
+
+                    for (int i = 0; i < newDocs.size(); i++) {
+                        %>
+                        <option value="<%=newDocs.get(i).getID()%>"> <%=newDocs.get(i).getID()%> </option>
+                        <%
+                            
+                        }
+
+                
+                
+                %>
+
+             </select>
+                <input type="Text"  name="Review">
+                <input type="submit" value="Review"/>
+        </form>
+                        
+                        
+                        
+                        
     </body>
 </html>

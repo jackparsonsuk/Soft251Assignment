@@ -67,44 +67,16 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("        \r\n");
       out.write("        \r\n");
       out.write("        <h2>Doctors</h2>\r\n");
-      out.write("                <form action=\"");
- 
-        
-        String drId = request.getParameter("Doctors");
-        Doctor d = new Doctor();
-        Patient p = new Patient();
-        ArrayList<Doctor> docs = d.readDoctor();
-        ArrayList<Patient> pats = p.readPatient();
-        Appointment ap = new Appointment();
-            for(int x = 0; x<docs.size(); x++){
-                if (docs.get(x).getID().equals(drId)) {
-                        ap.setDoc(docs.get(x));
-                    }
-            }
-            
-            for(int x = 0; x<pats.size(); x++){
-                if (pats.get(x).getID().equals(session.getAttribute("ID"))) {
-                        
-                        ap.setPat(pats.get(x));
-                    }
-            }
-            String uniqueID = UUID.randomUUID().toString();
-            ap.setAppointmentID(uniqueID);
-            ap.SaveAppointment(ap);
-        
-        
-        
-        
-        
-        
-            
-      out.write("\" method=\"POST\">\r\n");
+      out.write("                <form action=\"\r\n");
+      out.write("                      \r\n");
+      out.write("        PatientServlet\" >\r\n");
       out.write("        ");
       out.print(session.getAttribute("ID"));
       out.write("\r\n");
       out.write("            <select name=\"Doctors\">\r\n");
       out.write("                ");
-
+          Doctor d = new Doctor();
+                            ArrayList<Doctor> docs = d.readDoctor();
                     for (int i = 0; i < docs.size(); i++) {
                         
       out.write("\r\n");
@@ -136,21 +108,23 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("             <select name=\"RateDoc\">\r\n");
       out.write("                ");
 
-                    for (int i = 0; i < docs.size(); i++) {
+
+                    ArrayList<Doctor> newDocs = d.readDoctor();
+                    for (int i = 0; i < newDocs.size(); i++) {
                         
       out.write("\r\n");
       out.write("                        <option value=\"");
-      out.print(docs.get(i).getID());
+      out.print(newDocs.get(i).getID());
       out.write("\"> ");
-      out.print(docs.get(i).getID());
+      out.print(newDocs.get(i).getID());
       out.write(' ');
-      out.print(docs.get(i).viewRating());
+      out.print(newDocs.get(i).viewRating());
       out.write(" </option>\r\n");
       out.write("                        ");
 
                             
                         }
-                
+                System.out.println("Rating");
                 
                 
                 
@@ -160,7 +134,74 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                <input type=\"Text\" name=\"Rating\">\r\n");
       out.write("                <input type=\"submit\" value=\"Rate\"/>\r\n");
       out.write("        </form>\r\n");
+      out.write("                <h2>Your appointments</h2>\r\n");
+      out.write("                <table>\r\n");
+      out.write("                    ");
+
+                        Appointment tempAP = new Appointment();
+                        ArrayList<Appointment> aps = tempAP.readAppointment();
+                        for (int i = 0; i < aps.size(); i++) {
+                            if (aps.get(i).getPat().getID().equals(session.getAttribute("ID"))) {
+                                    
+                                
+                        
       out.write("\r\n");
+      out.write("                    <th>\r\n");
+      out.write("                        ");
+      out.print( aps.get(i).getDoc().getID());
+      out.write("\r\n");
+      out.write("                    </th>\r\n");
+      out.write("                    <td>\r\n");
+      out.write("                        ");
+      out.print( aps.get(i).getPat().getID() );
+      out.write("\r\n");
+      out.write("                        \r\n");
+      out.write("                    </td>\r\n");
+      out.write("                    ");
+
+                        }
+                            }
+                        
+      out.write("\r\n");
+      out.write("                    \r\n");
+      out.write("                    \r\n");
+      out.write("                </table>\r\n");
+      out.write("\r\n");
+      out.write("                        \r\n");
+      out.write("                        \r\n");
+      out.write("                        <h2> Review your doctor!</h2>\r\n");
+      out.write("                        <form action=\"PatientServlet\">\r\n");
+      out.write("            \r\n");
+      out.write("             <select name=\"ReviewDoc\">\r\n");
+      out.write("                ");
+
+
+                    for (int i = 0; i < newDocs.size(); i++) {
+                        
+      out.write("\r\n");
+      out.write("                        <option value=\"");
+      out.print(newDocs.get(i).getID());
+      out.write("\"> ");
+      out.print(newDocs.get(i).getID());
+      out.write(" </option>\r\n");
+      out.write("                        ");
+
+                            
+                        }
+
+                
+                
+                
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("             </select>\r\n");
+      out.write("                <input type=\"Text\"  name=\"Review\">\r\n");
+      out.write("                <input type=\"submit\" value=\"Review\"/>\r\n");
+      out.write("        </form>\r\n");
+      out.write("                        \r\n");
+      out.write("                        \r\n");
+      out.write("                        \r\n");
+      out.write("                        \r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {

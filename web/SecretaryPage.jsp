@@ -21,24 +21,12 @@
         <h1>Secretary</h1>
         
         <h2> Approve a patient</h2>
-        <form action="<% 
-        String sid = request.getParameter("unApproved");
-        Patient p  = new Patient();
-         ArrayList<Patient> pats =p.readPatient();
-         Secretary sec = new Secretary();
-                for(int x = 0; x <pats.size(); x++){
-                    if (pats.get(x).getID().equals(sid)) {
-                            sec.approvePatientAccount(pats.get(x));
-                            p.savePatient(pats.get(x));
-                        }
-                }
-                
-        
-        %>
-              "method="POST">
+        <form action="Secretary">
             
              <select name="unApproved">
         <% 
+            Patient p = new Patient();
+            ArrayList<Patient> pats = p.readPatient();
 
             for(int i = 0; i< pats.size(); i++){
                 if (pats.get(i).isApproved()== false) {
@@ -62,30 +50,17 @@
         
         
                 <h2> Approve an Appointment</h2>
-        <form action="<% 
-        String apoints = request.getParameter("unAppoinments");
-        Appointment ap = new Appointment();
-         ArrayList<Appointment> aps =ap.readAppointment();
-
-                for(int x = 0; x <aps.size(); x++){
-                    if (aps.get(x).getAppointmentID().equals(apoints)) {
-                            sec.createAppoitment(aps.get(x));
-                            aps.get(x).SaveAppointment(aps.get(x));
-                        }
-                }
-                
-        
-        %>
-              "method="POST">
+        <form action="Secretary" >
             
              <select name="unAppoinments">
         <% 
+            Appointment ap = new Appointment();
                 ArrayList<Appointment> apss =ap.readAppointment();
             for(int u = 0; u< apss.size(); u++){
                 if (apss.get(u).getApproved()== false) {
                 %>
 
-                    <option value="<%=apss.get(u).getAppointmentID()%>"> <%= apss.get(u).getApproved()%> </option>
+                    <option value="<%=apss.get(u).getAppointmentID()%>"> <%= apss.get(u).getDoc().getID()%>  + <%= apss.get(u).getPat().getID()%></option>
 
             
             <%
@@ -104,5 +79,5 @@
         <h2> 
 
         
-    </body>
+    </body> 
 </html>

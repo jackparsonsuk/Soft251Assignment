@@ -146,7 +146,8 @@ public class Doctor extends User implements java.io.Serializable{
                     }
                 }
                 System.out.println("NO DOCTOR FOUND -----------------------------------------------------------------");
-              return null;
+                Doctor doc = new Doctor();
+              return doc;
             }
     
   
