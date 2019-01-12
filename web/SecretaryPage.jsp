@@ -13,6 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>JSP Page</title>
     </head>
     <body>
@@ -74,6 +75,30 @@
         </select>  
         
         <input type="submit" value="Approve"/>
+        </form>
+                <form action="Secretary" >
+            
+             <select name="wantsTermination">
+        <% 
+            ArrayList<Patient> ps = p.readPatient();
+            for(int f = 0; f< ps.size(); f++){
+                if (ps.get(f).getWantsTermination()== true) {
+                %>
+
+                <option value="<%=ps.get(f).getID()%>"> <%= ps.get(f).getID()%></option>
+
+            
+            <%
+                
+ 
+                    }
+
+            }
+        
+        %>
+        </select>  
+        
+        <input type="submit" value="Remove"/>
         </form>
         
         <h2> 

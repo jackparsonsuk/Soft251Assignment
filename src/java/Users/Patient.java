@@ -19,9 +19,17 @@ import java.util.ArrayList;
  * @author Jack
  */
 public class Patient extends User{
-
+    Boolean wantsTermination = false;
      public Patient(){
         
+    }
+
+    public Boolean getWantsTermination() {
+        return wantsTermination;
+    }
+
+    public void setWantsTermination(Boolean wantsTermination) {
+        this.wantsTermination = wantsTermination;
     }
     public Patient(String ID, String Password, String firstName, String lastName, String address, String DOB, String gender){
     this.ID = ID;

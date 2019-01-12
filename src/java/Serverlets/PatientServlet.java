@@ -40,6 +40,7 @@ public class PatientServlet extends HttpServlet {
           String patId = session.getAttribute("ID").toString();
           String RviewDoc = request.getParameter("ReviewDoc");
           String Rview = request.getParameter("Review");
+          String terminate = request.getParameter("terminate");
         
         if (!(ratingId == null)) {
             Doctor d = new Doctor();
@@ -50,7 +51,12 @@ public class PatientServlet extends HttpServlet {
         }
         
         
-        
+        if (!(terminate == null)) {
+            Patient p = new Patient();
+            Patient realP = p.getPaitent(patId);
+            realP.setWantsTermination(Boolean.TRUE);
+            p.savePatient(realP);
+        }
         
         if ((!(drId == null)) && (!(patId == null))) {
             

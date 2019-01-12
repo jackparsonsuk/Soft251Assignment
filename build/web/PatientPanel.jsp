@@ -163,6 +163,11 @@
                 <input type="Text"  name="Review">
                 <input type="submit" value="Review"/>
         </form>
+                <br>
+                <form action="PatientServlet">
+                    <input type="submit" name="terminate" value="Request account termination">
+                </form>
+                
                         
                         
                         

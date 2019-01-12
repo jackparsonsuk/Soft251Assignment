@@ -41,6 +41,7 @@ public class Secretary extends HttpServlet {
             throws ServletException, IOException {
             String sid = request.getParameter("unApproved");
             String apoints = request.getParameter("unAppoinments");
+            String wantsR= request.getParameter("wantsTermination");
 
         if (!(sid == null)) {
                   Patient p  = new Patient();
@@ -61,6 +62,14 @@ public class Secretary extends HttpServlet {
             sec.createAppoitment(realAp);
             ap.SaveAppointment(realAp);
         } 
+        
+        if (!(wantsR==null)) {
+            Patient p = new Patient();
+            Patient realP = p.getPaitent(wantsR);
+            realP.setApproved(false);
+            realP.setWantsTermination(false);
+            p.savePatient(realP);
+        }
         
 
          

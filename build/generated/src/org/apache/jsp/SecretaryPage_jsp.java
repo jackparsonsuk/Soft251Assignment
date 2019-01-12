@@ -136,6 +136,38 @@ public final class SecretaryPage_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        \r\n");
       out.write("        <input type=\"submit\" value=\"Approve\"/>\r\n");
       out.write("        </form>\r\n");
+      out.write("                <form action=\"Secretary\" >\r\n");
+      out.write("            \r\n");
+      out.write("             <select name=\"wantsTermination\">\r\n");
+      out.write("        ");
+ 
+            ArrayList<Patient> ps = p.readPatient();
+            for(int f = 0; f< ps.size(); f++){
+                if (ps.get(f).getWantsTermination()== true) {
+                
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                <option value=\"");
+      out.print(ps.get(f).getID());
+      out.write("\"> ");
+      out.print( ps.get(f).getID());
+      out.write("</option>\r\n");
+      out.write("\r\n");
+      out.write("            \r\n");
+      out.write("            ");
+
+                
+ 
+                    }
+
+            }
+        
+        
+      out.write("\r\n");
+      out.write("        </select>  \r\n");
+      out.write("        \r\n");
+      out.write("        <input type=\"submit\" value=\"Approve\"/>\r\n");
+      out.write("        </form>\r\n");
       out.write("        \r\n");
       out.write("        <h2> \r\n");
       out.write("\r\n");

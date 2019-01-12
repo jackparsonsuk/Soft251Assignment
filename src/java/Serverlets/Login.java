@@ -33,7 +33,7 @@ public class Login extends HttpServlet {
       String UsernameCheck;
       String PasswordCheck;
         HttpSession session = request.getSession();
-           String uname = request.getParameter("id");
+           String uname = request.getParameter("id").toUpperCase();
         String pass = request.getParameter("pword");
         
 
@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
             for (int i = 0; i < a.size(); i++) {
                 UsernameCheck = a.get(i).getID();
                 PasswordCheck = a.get(i).getPassword();
-                if (uname.equals(UsernameCheck) && pass.equals(PasswordCheck)) {
+                if (uname.equals(UsernameCheck.toUpperCase()) && pass.equals(PasswordCheck)) {
                      
                      session.setAttribute("ID", UsernameCheck);
                     response.sendRedirect("AdminPanel.jsp");
@@ -68,7 +68,7 @@ public class Login extends HttpServlet {
             for (int i = 0; i < a.size(); i++) {
                 UsernameCheck = a.get(i).getID();
                 PasswordCheck = a.get(i).getPassword();
-                if (uname.equals(UsernameCheck) && pass.equals(PasswordCheck)) {
+                if (uname.equals(UsernameCheck.toUpperCase()) && pass.equals(PasswordCheck)) {
                     session.setAttribute("ID", UsernameCheck);
                     response.sendRedirect("SecretaryPage.jsp");
                     }
@@ -84,7 +84,7 @@ public class Login extends HttpServlet {
             for (int i = 0; i < d.size(); i++) {
                 UsernameCheck = d.get(i).getID();
                 PasswordCheck = d.get(i).getPassword();
-                if (uname.equals(UsernameCheck) && pass.equals(PasswordCheck)) {
+                if (uname.equals(UsernameCheck.toUpperCase()) && pass.equals(PasswordCheck)) {
                     session.setAttribute("ID", UsernameCheck);
                     response.sendRedirect("DoctorPanel.jsp");
                     }
@@ -103,7 +103,7 @@ public class Login extends HttpServlet {
             for (int i = 0; i < p.size(); i++) {
                 UsernameCheck = p.get(i).getID();
                 PasswordCheck = p.get(i).getPassword();
-                if (uname.equals(UsernameCheck) && pass.equals(PasswordCheck)) {
+                if (uname.equals(UsernameCheck.toUpperCase()) && pass.equals(PasswordCheck)) {
                     session.setAttribute("ID", UsernameCheck);
                     response.sendRedirect("PatientPanel.jsp");
                     }

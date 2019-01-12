@@ -12,6 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Doctor</title>
     </head>
     <body>
@@ -28,13 +29,16 @@
         Current Rating: <%=realDoc.getRating() %><br>
         Comments:<%=realDoc.getFeedback().get(0) %>
 
-        <h2>Upcomming appointments</h2>
+        <h2>Upcomming approved appointments</h2>
 
         <%
             Appointment ap = new Appointment();
             ArrayList<Appointment> aps = ap.readAppointment();
             for(int i = 0; i < aps.size(); i++){
-                if (ap.getAppointment(aps.get(i).getAppointmentID()).getDoc().getID().equals(session.getAttribute("ID"))) {
+                if (ap.getAppointment(aps.get(i).getAppointmentID()).getDoc().getID().equals(session.getAttribute("ID")) ) {
+                    if (aps.get(i).getApproved().equals(true)) {
+                            
+                       
                         %>
                         
                         
@@ -46,6 +50,7 @@
                         
                         <%
                     }
+                     }
             
             }
          
