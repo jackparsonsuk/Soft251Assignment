@@ -22,7 +22,7 @@ public class Appointment implements java.io.Serializable{
         String AppointmentID;
     Doctor doc;
     Patient pat;
-    String notes;
+    ArrayList<String> notes = new ArrayList<String>();
     Boolean approved = false;
 
     public void Appointment(){
@@ -56,11 +56,11 @@ public class Appointment implements java.io.Serializable{
         this.pat = pat;
     }
 
-    public String getNotes() {
+    public ArrayList<String> getNotes() {
         return notes;
     }
 
-    public void setNotes(String notes) {
+    public void setNotes(ArrayList<String> notes) {
         this.notes = notes;
     }
 
