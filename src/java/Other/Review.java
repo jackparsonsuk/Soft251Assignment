@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author Jack Parsons
  */
-public class Review {
+public class Review implements java.io.Serializable{
     Doctor doc;
     Patient pat;
     String Message;
@@ -56,7 +56,7 @@ public class Review {
    public void SaveReview(Review inReview){
        
        ArrayList<Review> cur = readReview();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Reviews.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Reviews.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         cur.add(inReview);
         outs.writeObject(cur);
@@ -71,7 +71,7 @@ public class Review {
        ArrayList<Review> reviews = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Reviews.ser");
+        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Reviews.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         reviews = (ArrayList<Review>)ins.readObject();
         fileIn.close();
@@ -87,6 +87,19 @@ public class Review {
          return reviews;
       }
         return reviews;
+   }
+   
+   public ArrayList<Review> getDoctorReview(String doctorID){
+       ArrayList<Review> allRev = readReview();
+       ArrayList<Review> docReview = new ArrayList<Review>();
+       
+       for (int i = 0; i < allRev.size(); i++) {
+           if (allRev.get(i).getDoc().getID().equals(doctorID)) {
+           docReview.add(allRev.get(i));
+           }
+       }
+       
+       return docReview;
    }
     
 }

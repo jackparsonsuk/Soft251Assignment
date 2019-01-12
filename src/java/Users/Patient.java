@@ -73,7 +73,7 @@ public class Patient extends User{
     
      public void savePatient(Patient inPatient){
         ArrayList<Patient> cur = readPatient();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Patients.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Patients.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         
             for (int i = 0; i < cur.size(); i++) {
@@ -97,7 +97,7 @@ public class Patient extends User{
     ArrayList<Patient> patients = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Patients.ser");
+        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Patients.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         patients = (ArrayList<Patient>)ins.readObject();
         ins.close();

@@ -4,6 +4,7 @@
     Author     : Jack
 --%>
 
+<%@page import="Other.Review"%>
 <%@page import="Users.Secretary"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Users.Doctor"%>
@@ -12,7 +13,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Admin page</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     </head>
     <body>
         <h1>Hello World!</h1>
@@ -59,20 +62,60 @@
                 
                 %>
                 
-                
-                
-                a
             </select>
         <input type="submit" value="Remove"/>
         
     </form>
-                <form action="AdminServlet">
+                
+                <table class="table">
+                    <tr>
+                        <th>
+                            Doctor
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+                        <th>
+                            Comments
+                        </th> 
+                        <th>
+                            Comments
+                        </th>
+                        
+                    </tr>
                     
-                    <select name="DocRating">
-                <%
+                   
+                         <%
+                    
+                   Review r = new Review();
                     for (int i = 0; i < docs.size(); i++) {
+                            
+                         ArrayList<Review> docR = r.getDoctorReview(docs.get(i).getID());
                         %>
-                        <option value="<%=docs.get(i).getID()%>"> <%=docs.get(i).getID()%> </option>
+                         <tr>
+                        <th> <%=docs.get(i).getID()%> </th>
+                        <th> <%=docs.get(i).viewRating()%> </th>
+                        <th>
+                            <%
+                            for(int x = 0; x<docR.size(); x++){
+                                %>
+                                <%=docR.get(x).getMessage()%><br> 
+                                <%
+                            }
+                            %>
+                            
+                        </th>
+                        <th>
+                            <%
+                                for(int z = 0; z<docs.get(i).getFeedback().size();z++){
+                                %>
+                                <%=docs.get(i).getFeedback().get(z)%>
+                                <%
+                                }
+                            %>
+                        </th>
+                         <br>
+                             </tr>
                         
                         <%
                             
@@ -81,16 +124,36 @@
                 
                 
                 %>
+                        
+                        
+                   
+                    
+                    
+                </table>
+                
+                <form action="AdminServlet">
+                    <h2>Give feedback to doctor</h2>
+            <select name="Docs">
+                <%
+
+                    for (int l = 0; l < docs.size(); l++) {
+                        %>
+                        <option value="<%=docs.get(l).getID()%>"> <%=docs.get(l).getID()%> </option>
+                        <%
+                            
+                        }
                 
                 
                 
+                %>
                 
             </select>
-                    <input type="submit" value="Rating?"/>
-                    
-                    
-                    
-                </form>
-        <%= request.getAttribute("Rating") %>
+                <input type="text" name="feedDoc">
+        <input type="submit" value="Give Feedback"/>
+        
+    </form>
+
+               
+
     </body>
 </html>

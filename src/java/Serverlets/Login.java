@@ -49,7 +49,7 @@ public class Login extends HttpServlet {
                 if (uname.equals(UsernameCheck) && pass.equals(PasswordCheck)) {
                      
                      session.setAttribute("ID", UsernameCheck);
-                    response.sendRedirect("welcome.jsp");
+                    response.sendRedirect("AdminPanel.jsp");
                     
                     }
 //                else{
@@ -70,7 +70,7 @@ public class Login extends HttpServlet {
                 PasswordCheck = a.get(i).getPassword();
                 if (uname.equals(UsernameCheck) && pass.equals(PasswordCheck)) {
                     session.setAttribute("ID", UsernameCheck);
-                    response.sendRedirect("welcome.jsp");
+                    response.sendRedirect("SecretaryPage.jsp");
                     }
                 
             }
@@ -86,7 +86,7 @@ public class Login extends HttpServlet {
                 PasswordCheck = d.get(i).getPassword();
                 if (uname.equals(UsernameCheck) && pass.equals(PasswordCheck)) {
                     session.setAttribute("ID", UsernameCheck);
-                    response.sendRedirect("welcome.jsp");
+                    response.sendRedirect("DoctorPanel.jsp");
                     }
                 
                 
@@ -105,7 +105,7 @@ public class Login extends HttpServlet {
                 PasswordCheck = p.get(i).getPassword();
                 if (uname.equals(UsernameCheck) && pass.equals(PasswordCheck)) {
                     session.setAttribute("ID", UsernameCheck);
-                    response.sendRedirect("welcome.jsp");
+                    response.sendRedirect("PatientPanel.jsp");
                     }
                 
                 

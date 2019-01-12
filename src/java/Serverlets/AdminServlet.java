@@ -32,6 +32,7 @@ public class AdminServlet extends HttpServlet {
                       String drId = request.getParameter("Doctors");
                       String secId = request.getParameter("Secs");
                       String dID = request.getParameter("DocRating"); 
+                      String docFeed = request.getParameter("Docs");
         
         //Remove a doctor
         if (!(drId==null) ) {
@@ -56,9 +57,20 @@ public class AdminServlet extends HttpServlet {
                     if (!(dID==null)) {
                         Doctor d = new Doctor();
                         Doctor realDoc = d.getDoctor(dID);
-                        
+
                         request.setAttribute("Rating", realDoc.viewRating());
                     }
+                    
+                    
+                    //Give feedback on a doctor
+                    
+                    
+                    if (!(docFeed==null)) {
+                            String Feedb = request.getParameter("feedDoc");
+                            Doctor d = new Doctor();
+                            Doctor realDoc = d.getDoctor(docFeed);
+                            realDoc.addFeedback(Feedb, realDoc);
+                        }
                     
                 response.sendRedirect("AdminPanel.jsp");
         }

@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import Other.Review;
 import Users.Secretary;
 import java.util.ArrayList;
 import Users.Doctor;
@@ -50,11 +51,14 @@ public final class AdminPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("        <title>JSP Page</title>\r\n");
+      out.write("        <title>Admin page</title>\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\r\n");
+      out.write("\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
       out.write("        <h1>Hello World!</h1>\r\n");
@@ -117,26 +121,78 @@ public final class AdminPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
                 
       out.write("\r\n");
       out.write("                \r\n");
-      out.write("                \r\n");
-      out.write("                \r\n");
-      out.write("                a\r\n");
       out.write("            </select>\r\n");
       out.write("        <input type=\"submit\" value=\"Remove\"/>\r\n");
       out.write("        \r\n");
       out.write("    </form>\r\n");
-      out.write("                <form action=\"AdminServlet\">\r\n");
+      out.write("                \r\n");
+      out.write("                <table class=\"table\">\r\n");
+      out.write("                    <tr>\r\n");
+      out.write("                        <th>\r\n");
+      out.write("                            Doctor\r\n");
+      out.write("                        </th>\r\n");
+      out.write("                        <th>\r\n");
+      out.write("                            Rating\r\n");
+      out.write("                        </th>\r\n");
+      out.write("                        <th>\r\n");
+      out.write("                            Comments\r\n");
+      out.write("                        </th> \r\n");
+      out.write("                        <th>\r\n");
+      out.write("                            Comments\r\n");
+      out.write("                        </th>\r\n");
+      out.write("                        \r\n");
+      out.write("                    </tr>\r\n");
       out.write("                    \r\n");
-      out.write("                    <select name=\"DocRating\">\r\n");
-      out.write("                ");
+      out.write("                   \r\n");
+      out.write("                         ");
 
+                    
+                   Review r = new Review();
                     for (int i = 0; i < docs.size(); i++) {
+                            
+                         ArrayList<Review> docR = r.getDoctorReview(docs.get(i).getID());
                         
       out.write("\r\n");
-      out.write("                        <option value=\"");
+      out.write("                         <tr>\r\n");
+      out.write("                        <th> ");
       out.print(docs.get(i).getID());
-      out.write("\"> ");
-      out.print(docs.get(i).getID());
-      out.write(" </option>\r\n");
+      out.write(" </th>\r\n");
+      out.write("                        <th> ");
+      out.print(docs.get(i).viewRating());
+      out.write(" </th>\r\n");
+      out.write("                        <th>\r\n");
+      out.write("                            ");
+
+                            for(int x = 0; x<docR.size(); x++){
+                                
+      out.write("\r\n");
+      out.write("                                ");
+      out.print(docR.get(x).getMessage());
+      out.write("<br> \r\n");
+      out.write("                                ");
+
+                            }
+                            
+      out.write("\r\n");
+      out.write("                            \r\n");
+      out.write("                        </th>\r\n");
+      out.write("                        <th>\r\n");
+      out.write("                            ");
+
+                                for(int z = 0; z<docs.get(i).getFeedback().size();z++){
+                                
+      out.write("\r\n");
+      out.write("                                ");
+      out.print(docs.get(i).getFeedback().get(z));
+      out.write("\r\n");
+      out.write("                                ");
+
+                                }
+                            
+      out.write("\r\n");
+      out.write("                        </th>\r\n");
+      out.write("                         <br>\r\n");
+      out.write("                             </tr>\r\n");
       out.write("                        \r\n");
       out.write("                        ");
 
@@ -147,18 +203,44 @@ public final class AdminPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
                 
                 
       out.write("\r\n");
+      out.write("                        \r\n");
+      out.write("                        \r\n");
+      out.write("                   \r\n");
+      out.write("                    \r\n");
+      out.write("                    \r\n");
+      out.write("                </table>\r\n");
       out.write("                \r\n");
-      out.write("                \r\n");
-      out.write("                \r\n");
+      out.write("                <form action=\"AdminServlet\">\r\n");
+      out.write("                    <h2>Give feedback to doctor</h2>\r\n");
+      out.write("            <select name=\"Docs\">\r\n");
+      out.write("                ");
+
+
+                    for (int l = 0; l < docs.size(); l++) {
+                        
+      out.write("\r\n");
+      out.write("                        <option value=\"");
+      out.print(docs.get(l).getID());
+      out.write("\"> ");
+      out.print(docs.get(l).getID());
+      out.write(" </option>\r\n");
+      out.write("                        ");
+
+                            
+                        }
+                
+                
+                
+                
+      out.write("\r\n");
       out.write("                \r\n");
       out.write("            </select>\r\n");
-      out.write("                    <input type=\"submit\" value=\"Rating?\"/>\r\n");
-      out.write("                    \r\n");
-      out.write("                    \r\n");
-      out.write("                    \r\n");
-      out.write("                </form>\r\n");
-      out.write("        ");
-      out.print( request.getAttribute("Rating") );
+      out.write("                <input type=\"text\" name=\"feedDoc\">\r\n");
+      out.write("        <input type=\"submit\" value=\"Give Feedback\"/>\r\n");
+      out.write("        \r\n");
+      out.write("    </form>\r\n");
+      out.write("\r\n");
+      out.write("               \r\n");
       out.write("\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");

@@ -23,6 +23,7 @@ public class Doctor extends User implements java.io.Serializable{
 
     Double Rating = 0d;
     int numberOfRating = 0;
+    ArrayList<String> feedback = new ArrayList<String>();
     public Doctor(){
         
     }
@@ -36,6 +37,30 @@ public class Doctor extends User implements java.io.Serializable{
     this.gender = gender;
     
 
+    }
+
+    public Double getRating() {
+        return Rating;
+    }
+
+    public void setRating(Double Rating) {
+        this.Rating = Rating;
+    }
+
+    public int getNumberOfRating() {
+        return numberOfRating;
+    }
+
+    public void setNumberOfRating(int numberOfRating) {
+        this.numberOfRating = numberOfRating;
+    }
+
+    public ArrayList<String> getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(ArrayList<String> feedback) {
+        this.feedback = feedback;
     }
 
 
@@ -67,11 +92,17 @@ public class Doctor extends User implements java.io.Serializable{
     
     
     
-    
+    public void addFeedback(String inFeedback, Doctor doc){
+        ArrayList<String> oldFeed = doc.getFeedback();
+        oldFeed.add(inFeedback);
+        doc.setFeedback(oldFeed);
+        doc.saveDoctor(doc);
+        
+    }
     
      public void saveDoctor(Doctor inDoctor){
         ArrayList<Doctor> cur = readDoctor();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Doctors.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         
             for (int i = 0; i < cur.size(); i++) {
@@ -95,7 +126,7 @@ public class Doctor extends User implements java.io.Serializable{
     ArrayList<Doctor> doctors = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Doctors.ser");
+        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         doctors = (ArrayList<Doctor>)ins.readObject();
         fileIn.close();
@@ -121,7 +152,7 @@ public class Doctor extends User implements java.io.Serializable{
             }
         }
     
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack Parsons/Desktop/Netbeansout/Doctors.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser")){
                     ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         
                     outs.writeObject(doctors);
