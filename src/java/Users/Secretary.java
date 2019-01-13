@@ -5,8 +5,11 @@
  */
 package Users;
 
+import Observe.Observable;
+import Observe.Observer;
 import Other.Appointment;
 import Other.Medicine;
+import Other.Notification;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,10 +21,12 @@ import java.util.ArrayList;
  *
  * @author Jack
  */
-public class Secretary extends User {
+public class Secretary extends User implements Observer {
+
+    ArrayList<String> Notis = new ArrayList<String>();
         public Secretary(){
-        
-    }
+           
+        }
     public Secretary(String ID, String Password, String firstName, String lastName, String address, String DOB, String gender){
     this.ID = ID;
     this.Password = Password;
@@ -30,8 +35,21 @@ public class Secretary extends User {
     this.address = address;
     this.DOB = DOB;
     this.gender = gender;
+    Medicine m = new Medicine();
+//    ArrayList<Medicine> ms = m.readMedicine();
+//        for (int i = 0; i < ms.size(); i++) {
+//            ms.get(i).registerObserver(this);
+//        }
     
 
+    }
+
+    public ArrayList<String> getNotis() {
+        return Notis;
+    }
+
+    public void setNotis(ArrayList<String> Notis) {
+        this.Notis = Notis;
     }
     
     
@@ -75,6 +93,11 @@ public class Secretary extends User {
         ArrayList<Secretary> cur = readSecretary();
         try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Secretarys.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
+        for (int i = 0; i < cur.size(); i++) {
+               if (cur.get(i).getID().equals(inSecretary.getID())) {
+                    cur.remove(i);
+                } 
+            }
         cur.add(inSecretary);
         outs.writeObject(cur);
         outs.close();
@@ -108,9 +131,42 @@ public class Secretary extends User {
         return secretarys;
     }
 
+    @Override
+    public void update(int stock, String ID) {
+        if (ID.startsWith("M")) {
+                
+              ArrayList<String> cur = this.getNotis();
+              cur.add(ID  + " Has low stock");
+              this.setNotis(cur);
+              Secretary s = new Secretary();
+              s.saveSecretary(this);
+              System.out.println("Updated Secretary" + this.ID);
+              System.out.println("Current notes" + this.getNotis().get(0));
+                            System.out.println("Current notes" + this.getNotis().get(1));
+              
+            
+        }
+
+    }
+    public Secretary getSecretary(String ID){
+          Secretary s = new Secretary();
+     ArrayList<Secretary> secs = s.readSecretary();
+            for(int x = 0; x<secs.size(); x++){
+                if (secs.get(x).getID().equals(ID)) {
+                    System.out.println("FOUND DOCTOR -----------------------------------------------------------------");
+                        return secs.get(x);
+                        
+                    }
+                }
+                System.out.println("NO DOCTOR FOUND -----------------------------------------------------------------");
+               
+              return s;
+            }
+    }
+
 
     
     
     
     
-}
+

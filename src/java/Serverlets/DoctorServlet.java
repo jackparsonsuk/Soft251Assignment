@@ -6,8 +6,11 @@
 package Serverlets;
 
 import Other.Appointment;
+import Other.Medicine;
+import Other.Notification;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +31,8 @@ public class DoctorServlet extends HttpServlet {
             throws ServletException, IOException {
         
          String curAppointment = request.getParameter("SelectedAp");
+         String medId = request.getParameter("MedName");
+         String Dos = request.getParameter("Dosage");
          HttpSession session = request.getSession();
          Appointment ap = new Appointment();
          Appointment realAp = ap.getAppointment(curAppointment);
@@ -38,6 +43,22 @@ public class DoctorServlet extends HttpServlet {
                session.setAttribute("curAppointment", id.toString());
                response.sendRedirect("AppointmentPanel.jsp");
            }
+           if (!(medId == null)) {
+            Medicine med = new Medicine();
+            med.setMedicineID("M" + medId);
+            med.setDosage(Dos);
+            
+            Users.Secretary s  = new Users.Secretary();
+            ArrayList<Users.Secretary> secs = s.readSecretary();
+               for (int i = 0; i < secs.size(); i++) {
+                    med.addObserrver(secs.get(i));
+               }
+             System.out.println("Creeated Medicine" + medId);
+             med.notifyObserver();
+            med.saveMedicine(med);
+          
+            
+        }
         
 
     }

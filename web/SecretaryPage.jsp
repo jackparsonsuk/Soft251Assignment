@@ -4,6 +4,8 @@
     Author     : Jack
 --%>
 
+<%@page import="Other.Medicine"%>
+<%@page import="Other.Notification"%>
 <%@page import="Other.Appointment"%>
 <%@page import="Users.Secretary"%>
 <%@page import="java.util.ArrayList"%>
@@ -18,7 +20,14 @@
     </head>
     <body>
        
-
+  <% 
+        Secretary sec = new Secretary();
+        Secretary realSec = sec.getSecretary(session.getAttribute("ID").toString());
+        System.out.println(realSec.getID());
+        System.out.println(session.getAttribute("ID").toString());
+        
+        
+        %>
         <h1>Secretary</h1>
         
         <h2> Approve a patient</h2>
@@ -101,7 +110,68 @@
         <input type="submit" value="Remove"/>
         </form>
         
-        <h2> 
+        
+        
+        <h2> Stock medicine</h2>
+                </form>
+                <form action="Secretary" >
+            
+             <select name="restockMed">
+        <% 
+            Medicine m = new Medicine();
+            ArrayList<Medicine> meds = m.readMedicine();
+            for(int g = 0; g< meds.size(); g++){
+                if (meds.get(g).getQuantity() <5) {
+                        
+                    
+                %>
+
+                <option style="color: red;" value="<%=meds.get(g).getMedicineID()%>"> <%= meds.get(g).getMedicineID()%> Stock: <%= meds.get(g).getQuantity()%></option>
+
+            
+            <%
+                
+            }else{
+                    %>
+                    
+                    <option value="<%=meds.get(g).getMedicineID()%>"> <%= meds.get(g).getMedicineID()%> Stock: <%= meds.get(g).getQuantity()%></option>
+                    <%
+                }
+
+
+            }
+        
+        %>
+        </select>  
+        
+        <input type="submit" value="Restock"/>
+        </form>
+        
+        
+        
+        
+        
+        
+            
+            <h3>Your notifications</h3>
+            <%
+
+            ArrayList<String> notes = realSec.getNotis();
+            
+            for(int y = 0; y<notes.size(); y++){
+                
+            
+            %>
+            
+            
+            <h4><%=realSec.getNotis().get(y).toString()%></h4>
+
+            
+            <%
+         
+            }
+            
+            %>
 
         
     </body> 

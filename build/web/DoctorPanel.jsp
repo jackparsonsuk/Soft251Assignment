@@ -83,5 +83,11 @@
             <Input type="Submit" value="View Appointment">
         </form>
         <h2>Create new medicine</h2>
+        
+        <form action="DoctorServlet">
+            <input type ="text" name="MedName">
+            <input type="text" name="Dosage">
+            <input type="Submit" value="Create Medicine">
+        </form>
     </body>
 </html>

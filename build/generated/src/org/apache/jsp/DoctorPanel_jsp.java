@@ -54,6 +54,7 @@ public final class DoctorPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\n");
       out.write("        <title>Doctor</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
@@ -78,14 +79,17 @@ public final class DoctorPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.print(realDoc.getFeedback().get(0) );
       out.write("\n");
       out.write("\n");
-      out.write("        <h2>Upcomming appointments</h2>\n");
+      out.write("        <h2>Upcomming approved appointments</h2>\n");
       out.write("\n");
       out.write("        ");
 
             Appointment ap = new Appointment();
             ArrayList<Appointment> aps = ap.readAppointment();
             for(int i = 0; i < aps.size(); i++){
-                if (ap.getAppointment(aps.get(i).getAppointmentID()).getDoc().getID().equals(session.getAttribute("ID"))) {
+                if (ap.getAppointment(aps.get(i).getAppointmentID()).getDoc().getID().equals(session.getAttribute("ID")) ) {
+                    if (aps.get(i).getApproved().equals(true)) {
+                            
+                       
                         
       out.write("\n");
       out.write("                        \n");
@@ -103,6 +107,7 @@ public final class DoctorPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        ");
 
                     }
+                     }
             
             }
          
@@ -144,6 +149,12 @@ public final class DoctorPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <Input type=\"Submit\" value=\"View Appointment\">\n");
       out.write("        </form>\n");
       out.write("        <h2>Create new medicine</h2>\n");
+      out.write("        \n");
+      out.write("        <form action=\"DoctorServlet\">\n");
+      out.write("            <input type =\"text\" name=\"MedName\">\n");
+      out.write("            <input type=\"text\" name=\"Dosage\">\n");
+      out.write("            <input type=\"Submit\" value=\"Create Medicine\">\n");
+      out.write("        </form>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

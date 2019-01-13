@@ -3,6 +3,8 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import Other.Medicine;
+import Other.Notification;
 import Other.Appointment;
 import Users.Secretary;
 import java.util.ArrayList;
@@ -52,14 +54,26 @@ public final class SecretaryPage_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\r\n");
       out.write("        <title>JSP Page</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
       out.write("       \r\n");
+      out.write("  ");
+ 
+        Secretary sec = new Secretary();
+        Secretary realSec = sec.getSecretary(session.getAttribute("ID").toString());
+        System.out.println(realSec.getID());
+        System.out.println(session.getAttribute("ID").toString());
+        
+        
+        
       out.write("\r\n");
       out.write("        <h1>Secretary</h1>\r\n");
       out.write("        \r\n");
@@ -166,10 +180,78 @@ public final class SecretaryPage_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\r\n");
       out.write("        </select>  \r\n");
       out.write("        \r\n");
-      out.write("        <input type=\"submit\" value=\"Approve\"/>\r\n");
+      out.write("        <input type=\"submit\" value=\"Remove\"/>\r\n");
       out.write("        </form>\r\n");
       out.write("        \r\n");
-      out.write("        <h2> \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        <h2> Stock medicine</h2>\r\n");
+      out.write("                </form>\r\n");
+      out.write("                <form action=\"Secretary\" >\r\n");
+      out.write("            \r\n");
+      out.write("             <select name=\"wantsTermination\">\r\n");
+      out.write("        ");
+ 
+            Medicine m = new Medicine();
+            ArrayList<Medicine> meds = m.readMedicine();
+            for(int g = 0; g< meds.size(); g++){
+
+                
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                <option value=\"");
+      out.print(meds.get(g).getMedicineID());
+      out.write("\"> ");
+      out.print( meds.get(g).getMedicineID());
+      out.write("</option>\r\n");
+      out.write("\r\n");
+      out.write("            \r\n");
+      out.write("            ");
+
+                
+ 
+
+
+            }
+        
+        
+      out.write("\r\n");
+      out.write("        </select>  \r\n");
+      out.write("        \r\n");
+      out.write("        <input type=\"submit\" value=\"Restock\"/>\r\n");
+      out.write("        </form>\r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("        \r\n");
+      out.write("            \r\n");
+      out.write("            <h3>Your notifications</h3>\r\n");
+      out.write("            ");
+
+
+            ArrayList<String> notes = realSec.getNotis();
+            
+            for(int y = 0; y<notes.size(); y++){
+                
+            
+            
+      out.write("\r\n");
+      out.write("            \r\n");
+      out.write("            \r\n");
+      out.write("            <h4>");
+      out.print(realSec.getNotis().get(y).toString());
+      out.write("</h4>\r\n");
+      out.write("\r\n");
+      out.write("            \r\n");
+      out.write("            ");
+
+         
+            }
+            
+            
+      out.write("\r\n");
       out.write("\r\n");
       out.write("        \r\n");
       out.write("    </body> \r\n");
