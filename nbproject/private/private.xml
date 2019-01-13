@@ -5,17 +5,21 @@
         <group>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/web/SecretaryPage.jsp</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/web/login.jsp</file>
+            <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Users/Patient.java</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Serverlets/NewUser.java</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Observe/Observer.java</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Serverlets/Login.java</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Observe/Observable.java</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/web/PatientPanel.jsp</file>
+            <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Users/Doctor.java</file>
+            <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Serverlets/AppointmentServlet.java</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Serverlets/Secretary.java</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/web/DoctorPanel.jsp</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Other/Notification.java</file>
-            <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Other/Medicine.java</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Users/Secretary.java</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Other/Appointment.java</file>
+            <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Other/Medicine.java</file>
+            <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/web/AppointmentPanel.jsp</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Serverlets/AdminServlet.java</file>
             <file>file:/C:/Users/Jack/Desktop/UpdatedSoft251/Soft251Assignment/src/java/Serverlets/DoctorServlet.java</file>
         </group>

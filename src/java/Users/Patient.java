@@ -7,6 +7,7 @@ package Users;
 
 
 
+import Other.Medicine;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -55,23 +56,27 @@ public class Patient extends User{
     
     
     boolean approved = false;
-    //add in prescribed medicine, using a medicine array
+    ArrayList<Medicine> prescription = new ArrayList<Medicine>();
     
     public void rateDoctor(int rating){
     
     }
-    public void requestAppointment(){
+    public void  requestAppointment(){
+
         
         
         
-        
+    }
+
+    public void setPrescription(ArrayList<Medicine> prescription) {
+        this.prescription = prescription;
     }
     
 
     
     
-    public void viewPrescription(){
-    
+    public ArrayList<Medicine> viewPrescription(){
+            return prescription;
     }
     public void requestAccountTermination(){
     

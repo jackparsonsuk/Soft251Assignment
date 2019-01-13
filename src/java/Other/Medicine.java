@@ -62,6 +62,16 @@ public class Medicine implements Observable,  java.io.Serializable {
             n.SaveNotification(n);
         }
     }
+    public Medicine getMedicine(String id){
+        Medicine m = new Medicine();
+        ArrayList<Medicine> meds = m.readMedicine();
+        for (int i = 0; i < meds.size(); i++) {
+            if (meds.get(i).getMedicineID().equals(id)) {
+                return meds.get(i);
+            }
+        }
+        return m;
+    }
     
 
 

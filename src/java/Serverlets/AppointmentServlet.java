@@ -6,6 +6,8 @@
 package Serverlets;
 
 import Other.Appointment;
+import Other.Medicine;
+import Users.Patient;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class AppointmentServlet extends HttpServlet {
             String note = request.getParameter("note");
             HttpSession session = request.getSession();
             String curAppointment = session.getAttribute("curAppointment").toString();
+            String selectedMed = request.getParameter("selectMedicine");
             Appointment ap = new Appointment();
             Appointment realAp = ap.getAppointment(curAppointment);
             
@@ -38,6 +41,24 @@ public class AppointmentServlet extends HttpServlet {
             realAp.setNotes(curNotes);
             ap.SaveAppointment(realAp);
             System.out.println(note);
+            }
+            if (!(selectedMed==(null))) {
+                Patient p =realAp.getPat();
+                ArrayList<Medicine> presc = p.viewPrescription();
+                Medicine med = new Medicine();
+                med = med.getMedicine(selectedMed);
+                med.setDosage(request.getParameter("Dosage"));
+                presc.add(med);
+                p.setPrescription(presc);
+                p.savePatient(p);
+                
+                Medicine realMed = med.getMedicine(selectedMed);
+                int quantity = Integer.parseInt(request.getParameter("Quant"));
+                int currentQuant = realMed.getQuantity();
+                int curQuant = (currentQuant-quantity);
+                realMed.setQuantity(curQuant);
+                realMed.saveMedicine(realMed);
+            
             }
             
             

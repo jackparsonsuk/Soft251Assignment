@@ -4,6 +4,7 @@
     Author     : Jack
 --%>
 
+<%@page import="Other.Medicine"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Other.Appointment"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -70,6 +71,37 @@
             <input type="text" name="note">
             <input type="submit" value="Add note">
         </form>
+        
+        <h2> Prescribe Medicine</h2>
+        <form action="AppointmentServlet">
+        
+            
+            <%
+                Medicine m = new Medicine();
+                ArrayList<Medicine> meds = m.readMedicine();
+                for(int i = 0; i<meds.size(); i++){
+                    
+                
+            %>
+               Select Medicine:     
+            <Select name="selectMedicine">
+            
+               <option value="<%=meds.get(i).getMedicineID()%>"><%=meds.get(i).getMedicineID()%>,  Quantity: <%=meds.get(i).getQuantity()%> </option>
+            </select>
+
+            
+            <%
+            }    
+            %><br><br>
+            
+            Select Dosage:<input type="text" name="Dosage"><br><br>
+            Select Quantity:<input type="text" name="Quant">
+            <input type="Submit" value="Prescribe">
+            
+            
+            
+        </form>
+        
         
         
     </body>

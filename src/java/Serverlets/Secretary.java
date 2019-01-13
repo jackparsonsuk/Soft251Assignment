@@ -5,6 +5,7 @@
  */
 package Serverlets;
 
+import Other.Medicine;
 import Users.Patient;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,6 +43,7 @@ public class Secretary extends HttpServlet {
             String sid = request.getParameter("unApproved");
             String apoints = request.getParameter("unAppoinments");
             String wantsR= request.getParameter("wantsTermination");
+            String restock = request.getParameter("restockMed");
 
         if (!(sid == null)) {
                   Patient p  = new Patient();
@@ -69,6 +71,16 @@ public class Secretary extends HttpServlet {
             realP.setApproved(false);
             realP.setWantsTermination(false);
             p.savePatient(realP);
+        }
+        if (!(restock==null)) {
+            Medicine m = new Medicine();
+            m = m.getMedicine(restock);
+            int quantitiy = m.getQuantity();
+            quantitiy += 100;
+            m.setQuantity(quantitiy);
+            m.saveMedicine(m);
+            
+            
         }
         
 

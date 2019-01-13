@@ -134,6 +134,9 @@ public class Secretary extends User implements Observer {
     @Override
     public void update(int stock, String ID) {
         if (ID.startsWith("M")) {
+            if (stock<100) {
+                
+
                 
               ArrayList<String> cur = this.getNotis();
               cur.add(ID  + " Has low stock");
@@ -145,6 +148,17 @@ public class Secretary extends User implements Observer {
                             System.out.println("Current notes" + this.getNotis().get(1));
               
             
+        }
+            else{
+                ArrayList<String> cur = this.getNotis();
+                for (int i = 0; i < cur.size(); i++) {
+                    if (cur.get(i).contains(ID)) {
+                        cur.remove(i);
+                        Secretary s = new Secretary();
+                        s.saveSecretary(this);
+                    }
+                }
+            }
         }
 
     }

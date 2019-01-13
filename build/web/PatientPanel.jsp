@@ -4,6 +4,7 @@
     Author     : Jack
 --%>
 
+<%@page import="Other.Medicine"%>
 <%@page import="Other.Review"%>
 <%@page import="java.util.UUID"%>
 <%@page import="Users.Patient"%>
@@ -139,9 +140,24 @@
                     
                     
                 </table>
+                        
+                        <h2> Your prescriptions</h2>
+                        
+                        <%
+                        
+                        Patient p = new Patient();
+                        Patient realP = p.getPaitent(session.getAttribute("ID").toString());
+                        ArrayList<Medicine> meds = new ArrayList<Medicine>();
+                        meds = realP.viewPrescription();
+                        for(int z = 0; z<meds.size(); z++){
 
+                        %>
+                        <%=meds.get(z).getMedicineID()%><br>
+                        <%=meds.get(z).getDosage()%>
                         
-                        
+                        <%
+                            }
+                        %>
                         <h2> Review your doctor!</h2>
                         <form action="PatientServlet">
             
