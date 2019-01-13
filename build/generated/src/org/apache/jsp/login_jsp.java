@@ -54,9 +54,16 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\r\n");
       out.write("        <h1>Hello World!</h1>\r\n");
       out.write("        \r\n");
-      out.write("        \r\n");
+      out.write("\r\n");
       out.write("        <form action=\"Login\">\r\n");
-      out.write("            \r\n");
+      out.write("                    What are you:\r\n");
+      out.write("            <select name=\"userType\">\r\n");
+      out.write("                <option value=\"D\">Doctor</option>\r\n");
+      out.write("                <option value=\"P\">Patient</option>\r\n");
+      out.write("                <option value=\"A\">Admin</option>\r\n");
+      out.write("                <option value=\"S\">Secretary</option>\r\n");
+      out.write("                \r\n");
+      out.write("            </select><br>\r\n");
       out.write("            Enter ID: <input type=\"text\" name=\"id\"><br>\r\n");
       out.write("            Enter Password: <input type=\"text\" name=\"pword\"><br>\r\n");
       out.write("            <input type=\"submit\" value=\"login\">\r\n");

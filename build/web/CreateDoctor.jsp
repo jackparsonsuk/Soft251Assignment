@@ -17,7 +17,14 @@
         
         
          <form action="NewUser">
-              
+                                  What are you:
+            <select name="userType">
+                <option value="D">Doctor</option>
+                <option value="P">Patient</option>
+                <option value="A">Admin</option>
+                <option value="S">Secretary</option>
+                
+            </select><br>
             <table border= "0">
                 <tbody>
                     <tr>

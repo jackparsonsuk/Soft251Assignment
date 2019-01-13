@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import Other.Medicine;
 import Other.Review;
 import java.util.UUID;
 import Users.Patient;
@@ -48,6 +49,7 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -219,9 +221,32 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                    \r\n");
       out.write("                    \r\n");
       out.write("                </table>\r\n");
+      out.write("                        \r\n");
+      out.write("                        <h2> Your prescriptions</h2>\r\n");
+      out.write("                        \r\n");
+      out.write("                        ");
+
+                        
+                        Patient p = new Patient();
+                        Patient realP = p.getPaitent(session.getAttribute("ID").toString());
+                        ArrayList<Medicine> meds = new ArrayList<Medicine>();
+                        meds = realP.viewPrescription();
+                        for(int z = 0; z<meds.size(); z++){
+
+                        
+      out.write("\r\n");
+      out.write("                        ");
+      out.print(meds.get(z).getMedicineID());
+      out.write("<br>\r\n");
+      out.write("                        ");
+      out.print(meds.get(z).getDosage());
       out.write("\r\n");
       out.write("                        \r\n");
-      out.write("                        \r\n");
+      out.write("                        ");
+
+                            }
+                        
+      out.write("\r\n");
       out.write("                        <h2> Review your doctor!</h2>\r\n");
       out.write("                        <form action=\"PatientServlet\">\r\n");
       out.write("            \r\n");
@@ -251,6 +276,11 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                <input type=\"Text\"  name=\"Review\">\r\n");
       out.write("                <input type=\"submit\" value=\"Review\"/>\r\n");
       out.write("        </form>\r\n");
+      out.write("                <br>\r\n");
+      out.write("                <form action=\"PatientServlet\">\r\n");
+      out.write("                    <input type=\"submit\" name=\"terminate\" value=\"Request account termination\">\r\n");
+      out.write("                </form>\r\n");
+      out.write("                \r\n");
       out.write("                        \r\n");
       out.write("                        \r\n");
       out.write("                        \r\n");

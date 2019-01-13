@@ -15,9 +15,16 @@
     <body>
         <h1>Hello World!</h1>
         
-        
+
         <form action="Login">
-            
+                    What are you:
+            <select name="userType">
+                <option value="D">Doctor</option>
+                <option value="P">Patient</option>
+                <option value="A">Admin</option>
+                <option value="S">Secretary</option>
+                
+            </select><br>
             Enter ID: <input type="text" name="id"><br>
             Enter Password: <input type="text" name="pword"><br>
             <input type="submit" value="login">

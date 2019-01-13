@@ -145,7 +145,7 @@ public class Secretary extends User implements Observer {
               s.saveSecretary(this);
               System.out.println("Updated Secretary" + this.ID);
               System.out.println("Current notes" + this.getNotis().get(0));
-                            System.out.println("Current notes" + this.getNotis().get(1));
+                            System.out.println("Current notes" + this.getNotis().get(0));
               
             
         }

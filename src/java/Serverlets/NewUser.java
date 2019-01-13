@@ -32,9 +32,9 @@ public class NewUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        
+            String userType = request.getParameter("userType");
             String firstName = request.getParameter("first");
-            String id = request.getParameter("ID");
+            String id = userType+ request.getParameter("ID");
             String pass = request.getParameter("Pass");
             String lastName = request.getParameter("Last");
             String address = request.getParameter("address");
@@ -52,10 +52,12 @@ public class NewUser extends HttpServlet {
             if (id.charAt(0) == 'P') {
             Patient pat = new Patient(id,pass,firstName,lastName,address,DOB,gender);
              pat.savePatient(pat);
+                          System.out.println("Created Patient with id:" + id);
             }
             if (id.charAt(0) == 'S') {
             Users.Secretary sec = new Users.Secretary(id,pass,firstName,lastName,address,DOB,gender);
              sec.saveSecretary(sec);
+
             }
             
              

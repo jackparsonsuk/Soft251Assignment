@@ -75,8 +75,6 @@ public final class DoctorPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        Current Rating: ");
       out.print(realDoc.getRating() );
       out.write("<br>\n");
-      out.write("        Comments:");
-      out.print(realDoc.getFeedback().get(0) );
       out.write("\n");
       out.write("\n");
       out.write("        <h2>Upcomming approved appointments</h2>\n");
@@ -87,7 +85,7 @@ public final class DoctorPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
             ArrayList<Appointment> aps = ap.readAppointment();
             for(int i = 0; i < aps.size(); i++){
                 if (ap.getAppointment(aps.get(i).getAppointmentID()).getDoc().getID().equals(session.getAttribute("ID")) ) {
-                    if (aps.get(i).getApproved().equals(true)) {
+                    if (aps.get(i).getApproved() == true) {
                             
                        
                         

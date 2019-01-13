@@ -27,42 +27,21 @@
         %>
         Welcome <%=realDoc.getID()%><br>
         Current Rating: <%=realDoc.getRating() %><br>
-        Comments:<%=realDoc.getFeedback().get(0) %>
+
 
         <h2>Upcomming approved appointments</h2>
 
-        <%
-            Appointment ap = new Appointment();
-            ArrayList<Appointment> aps = ap.readAppointment();
-            for(int i = 0; i < aps.size(); i++){
-                if (ap.getAppointment(aps.get(i).getAppointmentID()).getDoc().getID().equals(session.getAttribute("ID")) ) {
-                    if (aps.get(i).getApproved().equals(true)) {
-                            
-                       
-                        %>
-                        
-                        
-
-                        <%=aps.get(i).getApproved()%>
-                        <%=aps.get(i).getPat().getID()%><br>
-                       
-                                
-                        
-                        <%
-                    }
-                     }
-            
-            }
-         
-        
-        %>
 
         <form action="DoctorServlet">
             <select name="SelectedAp">
             <%
+             Appointment ap = new Appointment();
+            ArrayList<Appointment> aps = ap.readAppointment();
              for(int i = 0; i < aps.size(); i++){
                 if (ap.getAppointment(aps.get(i).getAppointmentID()).getDoc().getID().equals(session.getAttribute("ID"))) {
-
+                        if (aps.get(i).getApproved() == true) {
+                                
+                            
                         %>
                         <option value="<%=ap.getAppointment(aps.get(i).getAppointmentID()).getAppointmentID()%>"> <%=ap.getAppointment(aps.get(i).getAppointmentID()).getPat().getID() %></option>
                         
@@ -70,6 +49,7 @@
                         
                         
                         <%
+                    }
                 }
              }
             

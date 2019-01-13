@@ -48,6 +48,7 @@ public final class CreateDoctor_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\r\n");
       out.write("        <title>JSP Page</title>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
@@ -55,7 +56,14 @@ public final class CreateDoctor_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("        \r\n");
       out.write("        \r\n");
       out.write("         <form action=\"NewUser\">\r\n");
-      out.write("              \r\n");
+      out.write("                                  What are you:\r\n");
+      out.write("            <select name=\"userType\">\r\n");
+      out.write("                <option value=\"D\">Doctor</option>\r\n");
+      out.write("                <option value=\"P\">Patient</option>\r\n");
+      out.write("                <option value=\"A\">Admin</option>\r\n");
+      out.write("                <option value=\"S\">Secretary</option>\r\n");
+      out.write("                \r\n");
+      out.write("            </select><br>\r\n");
       out.write("            <table border= \"0\">\r\n");
       out.write("                <tbody>\r\n");
       out.write("                    <tr>\r\n");
