@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -24,14 +25,27 @@ public class Appointment implements java.io.Serializable{
     Patient pat;
     ArrayList<String> notes = new ArrayList<String>();
     Boolean approved = false;
+    String dateOfAp;
 
-    public void Appointment(){
-    
+    public String getDateOfAp() {
+        return dateOfAp;
     }
-    public void Appointment(Doctor doc, Patient pat){
+
+    public void setDateOfAp(String dateOfAp) {
+        this.dateOfAp = dateOfAp;
+    }
+
+
+   
+    public Appointment(Doctor doc, Patient pat){
         this.doc = doc;
         this.pat = pat;
+
     }
+    public Appointment(){
+    
+    }
+
     public String getAppointmentID() {
         return AppointmentID;
     }
@@ -71,6 +85,12 @@ public class Appointment implements java.io.Serializable{
     public void setApproved(Boolean approved) {
         this.approved = approved;
     }
+//    public ArrayList<Appointment> getPreviousAppointment(){
+//            ArrayList<Appoinment> curAppointment();
+//    }
+    
+    
+    
     public void SaveAppointment(Appointment ap){
         
          ArrayList<Appointment> cur = readAppointment();

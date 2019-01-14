@@ -56,8 +56,14 @@ public class AppointmentServlet extends HttpServlet {
                 int quantity = Integer.parseInt(request.getParameter("Quant"));
                 int currentQuant = realMed.getQuantity();
                 int curQuant = (currentQuant-quantity);
+                if (curQuant<0) {
+                            response.sendRedirect("AppointmentPanel.jsp");
+
+                }else{
                 realMed.setQuantity(curQuant);
-                realMed.saveMedicine(realMed);
+                realMed.saveMedicine(realMed);  
+                }
+                
             
             }
             

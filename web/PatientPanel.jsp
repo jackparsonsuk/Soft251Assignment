@@ -47,6 +47,7 @@
                 
                 
             </select>
+                <input type="Date" name="dateOfAp">
         <input type="submit" value="Create Appointment"/>
         
                 </form>
@@ -131,6 +132,10 @@
                     </th>
                     <td>
                         <%= aps.get(i).getPat().getID() %>
+                        
+                    </td>
+                    <td>
+                        <%= aps.get(i).getDateOfAp()%>
                         
                     </td>
                     <%

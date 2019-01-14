@@ -4,6 +4,7 @@
     Author     : Jack
 --%>
 
+<%@page import="Users.Patient"%>
 <%@page import="Users.Doctor"%>
 <%@page import="Other.Appointment"%>
 <%@page import="java.util.ArrayList"%>
@@ -27,6 +28,16 @@
         %>
         Welcome <%=realDoc.getID()%><br>
         Current Rating: <%=realDoc.getRating() %><br>
+        Comments:
+        <%
+        ArrayList<String> comments = realDoc.getFeedback();
+        for (int i = 0; i < comments.size(); i++) {
+                %>
+                <%=comments.get(i)%>
+                <%
+            }
+        
+        %>
 
 
         <h2>Upcomming approved appointments</h2>
@@ -69,5 +80,31 @@
             <input type="text" name="Dosage">
             <input type="Submit" value="Create Medicine">
         </form>
+                        <form action="DoctorServlet" >
+
+            <select name="Patient">
+                <%          Patient p = new Patient();
+                            ArrayList<Patient> pats = p.readPatient();
+                    for (int i = 0; i < pats.size(); i++) {
+                        %>
+                        <option value="<%=pats.get(i).getID()%>"> <%=pats.get(i).getID()%> </option>
+                        <%
+                            
+                        }
+                
+                
+                
+                %>
+                
+                
+                
+                
+            </select>
+                <input type="Date" name="dateOfAp">
+        <input type="submit" value="Propose Appointment"/>
+        
+                </form>
+        
+        
     </body>
 </html>

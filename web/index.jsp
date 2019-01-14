@@ -21,7 +21,11 @@
        
         
         <h1>Home</h1>
-        <a href="CreateDoctor.jsp"><button>Create Doctor</button></a>
+        <table class="table">
+            <th><a href="CreateDoctor.jsp"><button>Create User</button></a></th>
+            <th><a href="Login.jsp"><button>Login</button></a></th>
+        </table>
+        
 
     </body>
 </html>

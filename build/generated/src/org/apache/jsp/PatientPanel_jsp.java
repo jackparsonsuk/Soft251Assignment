@@ -104,6 +104,7 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                \r\n");
       out.write("                \r\n");
       out.write("            </select>\r\n");
+      out.write("                <input type=\"Date\" name=\"dateOfAp\">\r\n");
       out.write("        <input type=\"submit\" value=\"Create Appointment\"/>\r\n");
       out.write("        \r\n");
       out.write("                </form>\r\n");
@@ -209,6 +210,12 @@ public final class PatientPanel_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                    <td>\r\n");
       out.write("                        ");
       out.print( aps.get(i).getPat().getID() );
+      out.write("\r\n");
+      out.write("                        \r\n");
+      out.write("                    </td>\r\n");
+      out.write("                    <td>\r\n");
+      out.write("                        ");
+      out.print( aps.get(i).getDateOfAp());
       out.write("\r\n");
       out.write("                        \r\n");
       out.write("                    </td>\r\n");

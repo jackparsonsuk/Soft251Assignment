@@ -52,6 +52,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\r\n");
       out.write("               \r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">\r\n");
       out.write("        <title>JSP Page</title>\r\n");
       out.write("        \r\n");
       out.write("        \r\n");
@@ -62,7 +63,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("       \r\n");
       out.write("        \r\n");
       out.write("        <h1>Home</h1>\r\n");
-      out.write("        <a href=\"CreateDoctor.jsp\"><button>Create Doctor</button></a>\r\n");
+      out.write("        <table class=\"table\">\r\n");
+      out.write("            <th><a href=\"CreateDoctor.jsp\"><button>Create Doctor</button></a></th>\r\n");
+      out.write("            <th><a href=\"Login.jsp\"><button>Create Doctor</button></a></th>\r\n");
+      out.write("        </table>\r\n");
+      out.write("        \r\n");
       out.write("\r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");

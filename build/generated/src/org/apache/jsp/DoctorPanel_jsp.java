@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import Users.Patient;
 import Users.Doctor;
 import Other.Appointment;
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ public final class DoctorPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -79,47 +81,18 @@ public final class DoctorPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("        <h2>Upcomming approved appointments</h2>\n");
       out.write("\n");
-      out.write("        ");
-
-            Appointment ap = new Appointment();
-            ArrayList<Appointment> aps = ap.readAppointment();
-            for(int i = 0; i < aps.size(); i++){
-                if (ap.getAppointment(aps.get(i).getAppointmentID()).getDoc().getID().equals(session.getAttribute("ID")) ) {
-                    if (aps.get(i).getApproved() == true) {
-                            
-                       
-                        
-      out.write("\n");
-      out.write("                        \n");
-      out.write("                        \n");
-      out.write("\n");
-      out.write("                        ");
-      out.print(aps.get(i).getApproved());
-      out.write("\n");
-      out.write("                        ");
-      out.print(aps.get(i).getPat().getID());
-      out.write("<br>\n");
-      out.write("                       \n");
-      out.write("                                \n");
-      out.write("                        \n");
-      out.write("                        ");
-
-                    }
-                     }
-            
-            }
-         
-        
-        
-      out.write("\n");
       out.write("\n");
       out.write("        <form action=\"DoctorServlet\">\n");
       out.write("            <select name=\"SelectedAp\">\n");
       out.write("            ");
 
+             Appointment ap = new Appointment();
+            ArrayList<Appointment> aps = ap.readAppointment();
              for(int i = 0; i < aps.size(); i++){
                 if (ap.getAppointment(aps.get(i).getAppointmentID()).getDoc().getID().equals(session.getAttribute("ID"))) {
-
+                        if (aps.get(i).getApproved() == true) {
+                                
+                            
                         
       out.write("\n");
       out.write("                        <option value=\"");
@@ -133,6 +106,7 @@ public final class DoctorPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        \n");
       out.write("                        ");
 
+                    }
                 }
              }
             
@@ -153,6 +127,40 @@ public final class DoctorPanel_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <input type=\"text\" name=\"Dosage\">\n");
       out.write("            <input type=\"Submit\" value=\"Create Medicine\">\n");
       out.write("        </form>\n");
+      out.write("                        <form action=\"DoctorServlet\" >\n");
+      out.write("\n");
+      out.write("            <select name=\"Patient\">\n");
+      out.write("                ");
+          Patient p = new Patient();
+                            ArrayList<Patient> pats = p.readPatient();
+                    for (int i = 0; i < pats.size(); i++) {
+                        
+      out.write("\n");
+      out.write("                        <option value=\"");
+      out.print(pats.get(i).getID());
+      out.write("\"> ");
+      out.print(pats.get(i).getID());
+      out.write(" </option>\n");
+      out.write("                        ");
+
+                            
+                        }
+                
+                
+                
+                
+      out.write("\n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("                \n");
+      out.write("            </select>\n");
+      out.write("                <input type=\"Date\" name=\"dateOfAp\">\n");
+      out.write("        <input type=\"submit\" value=\"Propose Appointment\"/>\n");
+      out.write("        \n");
+      out.write("                </form>\n");
+      out.write("        \n");
+      out.write("        \n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

@@ -10,14 +10,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <title>JSP Page</title>
+        <title>Create User</title>
     </head>
     <body>
-        <h1>Create Doctor</h1>
+        <h1>Create User</h1>
         
         
          <form action="NewUser">
-                                  What are you:
+                                  Who are you:
             <select name="userType">
                 <option value="D">Doctor</option>
                 <option value="P">Patient</option>

@@ -8,9 +8,12 @@ package Serverlets;
 import Other.Appointment;
 import Other.Medicine;
 import Other.Notification;
+import Users.Doctor;
+import Users.Patient;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.UUID;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,6 +40,9 @@ public class DoctorServlet extends HttpServlet {
          Appointment ap = new Appointment();
          Appointment realAp = ap.getAppointment(curAppointment);
          String id = realAp.getAppointmentID();
+         String pat = request.getParameter("Patient");
+         String docId = session.getAttribute("ID").toString();
+         String dateOfAp = request.getParameter("dateOfAp");
          
            if (!(curAppointment==null) ) {
                System.out.println(id.toString() + "-----------------------------");
@@ -58,6 +64,21 @@ public class DoctorServlet extends HttpServlet {
             med.saveMedicine(med);
           
             
+        }
+           if (!(pat == null)) {
+        Doctor d = new Doctor();
+        Patient p = new Patient();
+        Doctor realDoc = new Doctor();
+        Patient realPat = new Patient();
+        realDoc = d.getDoctor(docId);
+        realPat = p.getPaitent(pat);
+        Appointment apoint = new Appointment(realDoc,realPat);
+        apoint.setDateOfAp(dateOfAp);    
+        String uniqueID = UUID.randomUUID().toString();
+        apoint.setAppointmentID(uniqueID);
+        apoint.SaveAppointment(apoint);
+        System.out.println("MADE Appointment");
+        response.sendRedirect("DoctorPanel.jsp");
         }
         
 

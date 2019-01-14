@@ -11,8 +11,13 @@ import Users.Doctor;
 import Users.Patient;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,6 +46,8 @@ public class PatientServlet extends HttpServlet {
           String RviewDoc = request.getParameter("ReviewDoc");
           String Rview = request.getParameter("Review");
           String terminate = request.getParameter("terminate");
+          String dateOfAp = request.getParameter("dateOfAp");
+  
         
         if (!(ratingId == null)) {
             Doctor d = new Doctor();
@@ -62,9 +69,7 @@ public class PatientServlet extends HttpServlet {
             
         
         
-                 System.out.println("MADE DOCTOR");
-       
-                System.out.println("MADE PATIENT");
+               
         Doctor d = new Doctor();
         Patient p = new Patient();
         ArrayList<Doctor> docs = d.readDoctor();
@@ -77,11 +82,9 @@ public class PatientServlet extends HttpServlet {
             
                 
                
-        Appointment ap = new Appointment();
-           
-                        ap.setDoc(realDoc);
-
-                        ap.setPat(realPat);
+        Appointment ap = new Appointment(realDoc,realPat);
+        ap.setDateOfAp(dateOfAp);
+        
                     
             String uniqueID = UUID.randomUUID().toString();
            ap.setAppointmentID(uniqueID);
