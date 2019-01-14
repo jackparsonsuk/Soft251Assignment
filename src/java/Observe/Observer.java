@@ -10,5 +10,11 @@ package Observe;
  * @author Jack
  */
 public interface Observer {
+
+    /**
+     * Update all observers
+     * @param stock
+     * @param ID
+     */
     public void update(int stock, String ID);
 }

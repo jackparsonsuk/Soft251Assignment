@@ -25,7 +25,27 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "AppointmentServlet", urlPatterns = {"/AppointmentServlet"})
 public class AppointmentServlet extends HttpServlet {
 
-    
+    /**
+     *
+     * The servlet behind the appointment panel<br>
+     * First this servlet has the ability to add notes to the current appointment<br>
+     * To do this, first the all of the notes from the current appointment get retrived<br>
+     * Then the note is added to the array<br>
+     * Next the array of notes is set back to the appointment<br>
+     * Then the appointment is saved<br><br>
+     * It also has the ability to assign medicine to a patient<br>
+     * This happens by a list of the patients current prescriptions<br>
+     * Then adding a dosage<br>
+     * Next, the quantity is taken away, and if the quantity goes under 0, the medicine is not assigned<br>
+     * If not, the medicine is assigned.
+     * 
+     * 
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             String note = request.getParameter("note");

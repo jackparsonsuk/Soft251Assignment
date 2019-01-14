@@ -27,6 +27,17 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
 
+    /**
+     * The Login servlet runs behind the Login Panel<br>
+     * It has many repeating parts, depending on what the ID starts with (A,S,D,P), it will pick the right section<br>
+     * For example, if the user is a patient, there ID will start with P, so the code will go through the Patient section<br>
+     * Within here, first, the user name and password are checked to see if they match (And in patient, to see if it is approved)<br>
+     * And if they are all true, the user will be redirected to the right area.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -118,6 +129,9 @@ public class Login extends HttpServlet {
         }
 
 
+        
+    }
+    private void patientLogIn(){
         
     }
 

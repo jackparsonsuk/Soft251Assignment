@@ -18,9 +18,23 @@ import java.util.ArrayList;
  */
 public class Admin extends User{
     
+    /**
+     *Empty Constructor
+     */
     public Admin(){
         
     }
+
+    /**
+     * Constructor for the admin
+     * @param ID
+     * @param Password
+     * @param firstName
+     * @param lastName
+     * @param address
+     * @param DOB
+     * @param gender
+     */
     public Admin(String ID, String Password, String firstName, String lastName, String address, String DOB, String gender){
     this.ID = ID;
     this.Password = Password;
@@ -33,18 +47,17 @@ public class Admin extends User{
 
     }
     
+
     
-    
-    
-    public void addDoctor(Doctor doc){
-    
-    }
-    public void addSecretary(Secretary sec){
-    
-    }
-    public void provideFeedback(Doctor doc){
-    }
-    
+    /**
+     * Saving Admin<br>
+     * The Admin that you want to save is passed in<br>
+     * Then the current ArrayList is read out and saved<br>
+     * Next a check is done to see if the Admin is already in the array, if it is then it is removed<br>
+     * Then the most up to date Admin is added<br>
+     * Then it is saved to the file<br>
+     * @param inAdmin
+     */
     public void saveAdmin(Admin inAdmin){
         ArrayList<Admin> cur = readAdmin();
         try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Admin.ser")){
@@ -59,6 +72,12 @@ public class Admin extends User{
         }
     }
     
+    /**
+     * Gets a list of all the Admin<br>
+     * Creates a list of Admin and then populates it with the medicine in the file<br>
+     * Returns the list
+     * @return
+     */
     public ArrayList<Admin> readAdmin(){
     ArrayList<Admin> admins = new ArrayList<>();
     

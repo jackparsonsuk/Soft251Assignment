@@ -21,17 +21,40 @@ import java.util.ArrayList;
  */
 public class Patient extends User{
     Boolean wantsTermination = false;
-     public Patient(){
+
+    /**
+     *Empty Constructor
+     */
+    public Patient(){
         
     }
 
+    /**
+     * returns wether the Patient wants their account terminated
+     * @return
+     */
     public Boolean getWantsTermination() {
         return wantsTermination;
     }
 
+    /**
+     * sets wether the Patient wants their account terminated
+     * @param wantsTermination
+     */
     public void setWantsTermination(Boolean wantsTermination) {
         this.wantsTermination = wantsTermination;
     }
+
+    /**
+     * Constructor to create a patient
+     * @param ID
+     * @param Password
+     * @param firstName
+     * @param lastName
+     * @param address
+     * @param DOB
+     * @param gender
+     */
     public Patient(String ID, String Password, String firstName, String lastName, String address, String DOB, String gender){
     this.ID = ID;
     this.Password = Password;
@@ -45,10 +68,18 @@ public class Patient extends User{
 
     }
 
+    /**
+     * Return weather the patient's account is approved
+     * @return
+     */
     public boolean isApproved() {
         return approved;
     }
 
+    /**
+     * Set weather the patient is approved
+     * @param approved
+     */
     public void setApproved(boolean approved) {
         this.approved = approved;
     }
@@ -57,34 +88,37 @@ public class Patient extends User{
     
     boolean approved = false;
     ArrayList<Medicine> prescription = new ArrayList<Medicine>();
-    
-    public void rateDoctor(int rating){
-    
-    }
-    public void  requestAppointment(){
 
-        
-        
-        
-    }
 
+    /**
+     * Set the precription array list
+     * @param prescription
+     */
     public void setPrescription(ArrayList<Medicine> prescription) {
         this.prescription = prescription;
+        
     }
     
-
-    
-    
+    /**
+     * View all prescriptions, returns the medicine arrayList
+     * @return
+     */
     public ArrayList<Medicine> viewPrescription(){
             return prescription;
     }
-    public void requestAccountTermination(){
-    
-    }
+
+
    
-    
-    
-     public void savePatient(Patient inPatient){
+    /**
+     * Saving Patient<br>
+     * The Patient that you want to save is passed in<br>
+     * Then the current ArrayList is read out and saved<br>
+     * Next a check is done to see if the Patient is already in the array, if it is then it is removed<br>
+     * Then the most up to date Patient is added<br>
+     * Then it is saved to the file<br>
+     * @param inPatient
+     */
+    public void savePatient(Patient inPatient){
         ArrayList<Patient> cur = readPatient();
         try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Patients.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
@@ -104,8 +138,12 @@ public class Patient extends User{
         }
     }
     
-     
-     
+    /**
+     * Gets a list of all the Patient<br>
+     * Creates a list of Patient and then populates it with the medicine in the file<br>
+     * Returns the list
+     * @return
+     */
     public ArrayList<Patient> readPatient(){
     ArrayList<Patient> patients = new ArrayList<>();
     
@@ -126,6 +164,16 @@ public class Patient extends User{
       }
         return patients;
     }
+
+    /**
+     * Get a specific Patient based on the ID<br>
+     * ID is passed in<br>
+     * A new arrayList is created based on all of the Patients<br>
+     * Then all of the Patients are searched to see if the ID is there<br>
+     * if it is, the Patient is returned
+     * @param PaitentID
+     * @return
+     */
     public Patient getPaitent(String PaitentID){
         ArrayList<Patient> pats = readPatient();
         for(int x = 0; x<pats.size(); x++){

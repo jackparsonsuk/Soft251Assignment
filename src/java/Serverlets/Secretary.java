@@ -23,20 +23,18 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Secretary", urlPatterns = {"/Secretary"})
 public class Secretary extends HttpServlet {
 
+
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * The Secretary Servlet runs behind the Secretary Panel<br>
+     * First the servlet can approve a patient account<br>
+     * It can also approve an appointment<br>
+     * It can also terminate the account of a user that wants termintation<br>
+     * And finally it can restock the selected medicine
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

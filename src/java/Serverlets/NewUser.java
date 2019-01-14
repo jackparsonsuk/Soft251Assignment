@@ -26,8 +26,16 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "NewUser", urlPatterns = {"/NewUser"})
 public class NewUser extends HttpServlet {
 
-
-
+    /**
+     * The Newuser Servlet runs behind The CreateDoctor panel<br>
+     * Within this Servlet, a new user is created and saved based on the ID.
+     * 
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -52,7 +60,6 @@ public class NewUser extends HttpServlet {
             if (id.charAt(0) == 'P') {
             Patient pat = new Patient(id,pass,firstName,lastName,address,DOB,gender);
              pat.savePatient(pat);
-                          System.out.println("Created Patient with id:" + id);
             }
             if (id.charAt(0) == 'S') {
             Users.Secretary sec = new Users.Secretary(id,pass,firstName,lastName,address,DOB,gender);
@@ -66,11 +73,7 @@ public class NewUser extends HttpServlet {
 
 
             response.sendRedirect("CreateDoctor.jsp");
-//            HttpSession session = request.getSession();
-//            
-//            session.setAttribute("Dingus", savedDoc.get(1).getDoctorID());
-//            session.setAttribute("Bangus", pass);
-//            session.setAttribute("Angus", savedDoc.get(0).getAddress());
+
     }
     
 

@@ -16,16 +16,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * 
  * @author Jack Parsons
  */
 @WebServlet(name = "AdminServlet", urlPatterns = {"/AdminServlet"})
 public class AdminServlet extends HttpServlet {
 
-
-
-
-
+    /**
+     * This servlet does many things.<br>
+     * First the serverlet, can remove a doctor<br>
+     * This happens when a doctor is selcted<br>
+     * Then a new instance of a doctor is created and the doctor is removed<br><br>
+     * Next the servlet can remove a secretary in the same way it can remove a doctor<br><br>
+     * It also can get the doctors rating and set an attribute of it.<br><br>
+     * Finally the servlet can create a new feedback file for a doctor<br>
+     * It first gets the feedback that has been passed in, and the current doctor ID.<br>
+     * Then the feedback is created and saved 
+     * 
+     * 
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

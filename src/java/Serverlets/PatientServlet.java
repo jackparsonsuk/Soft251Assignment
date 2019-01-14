@@ -10,14 +10,8 @@ import Other.Review;
 import Users.Doctor;
 import Users.Patient;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,9 +26,20 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "PatientServlet", urlPatterns = {"/PatientServlet"})
 public class PatientServlet extends HttpServlet {
 
-
-
-
+    /**
+     * The Patient servlet runs behind the Patient Panel<br>
+     * The first feature here is the ability to give a Doctor a rating<br>
+     * This works by getting the doctor ID and parseing the rating given<br>
+     * Then running the calculate rating function<br><br>
+     * Next, the user has the ability to terminate their account<br>
+     * If the button is pressed, the patient is retrived and the terminate boolean is set to true<br><br>
+     * Next the user can create an appointment with a doctor, based on the doctor selected and the currently logged in user<br><br>
+     * Finally the user can review a doctor, this works in the same way as giving a doctor a rating.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

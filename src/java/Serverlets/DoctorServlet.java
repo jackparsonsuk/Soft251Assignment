@@ -7,7 +7,7 @@ package Serverlets;
 
 import Other.Appointment;
 import Other.Medicine;
-import Other.Notification;
+
 import Users.Doctor;
 import Users.Patient;
 import java.io.IOException;
@@ -28,8 +28,16 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "DoctorServlet", urlPatterns = {"/DoctorServlet"})
 public class DoctorServlet extends HttpServlet {
 
-
-
+    /**
+     * The servlet behind the Doctor panel<br>
+     * This servlet can set the current appointment for when moving to the appointment panel<br>
+     * It has the ability to create a new medicine based on the medicine ID and dosage given to id<br>
+     * It can also create a new appointment with the doctor ID and the Patient ID
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         

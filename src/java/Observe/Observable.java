@@ -10,7 +10,21 @@ package Observe;
  * @author Jack
  */
 public interface Observable {
+
+    /**
+     * Register an observer
+     * @param o
+     */
     public void registerObserver(Observer o);
+
+    /**
+     * Remove an observer
+     * @param o
+     */
     public void removeObserver(Observer o);
+
+    /**
+     * Notify all observers
+     */
     public void notifyObserver();
 }

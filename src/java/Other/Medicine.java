@@ -24,44 +24,80 @@ public class Medicine implements Observable,  java.io.Serializable {
     int quantity;
     String dosage;
     ArrayList<Secretary> observers = new ArrayList<Secretary>();
+
+    /**
+     *Medicine Constructor 
+     * notifies the observers that there is no stock
+     * Sets the quantity to 0
+     */
     public void Medicine(){
         notifyObserver();
     quantity = 0;
 
     }
 
+    /**
+     *Gets the Medicine ID
+     * @return
+     */
     public String getMedicineID() {
         
         return MedicineID;
     }
 
+    /**
+     * Sets the Medicine ID
+     * @param MedicineID
+     */
     public void setMedicineID(String MedicineID) {
         this.MedicineID = MedicineID;
     }
 
+    /**
+     * Gets the quantity
+     * @return
+     */
     public int getQuantity() {
         return quantity;
     }
 
+    /**
+     *Sets the Quantity<br>
+     * Updates observers
+     * @param quantity
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
         notifyObserver();
-        //Update();
+
     }
 
+    /**
+     *Gets the dosage
+     * @return
+     */
     public String getDosage() {
         return dosage;
     }
 
+    /**
+     *Sets the dosage
+     * @param dosage
+     */
     public void setDosage(String dosage) {
         this.dosage = dosage;
     }
-    public void Update(){
-        if (this.quantity == 5 || this.quantity == 0) {
-            Notification n = new Other.Notification(this.MedicineID+ " Has low stock ", this.MedicineID);
-            n.SaveNotification(n);
-        }
-    }
+
+
+    /**
+     *Gets a specific medicine based on the ID passed in<br>
+     * Medicine ID is passed in<br>
+     * The arrayList Is searched<br>
+     * If the ID's match<br>
+     * The medicine is returned
+     * @param id
+     * @return
+     */
     public Medicine getMedicine(String id){
         Medicine m = new Medicine();
         ArrayList<Medicine> meds = m.readMedicine();
@@ -73,14 +109,22 @@ public class Medicine implements Observable,  java.io.Serializable {
         return m;
     }
     
-
-
+    /**
+     *Adds an observer to the observer list<br>
+     * Then saves the Medicine
+     * @param s
+     */
     public void addObserrver(Secretary s) {
         observers.add(s);
         Medicine m = new Medicine();
         m.saveMedicine(this);
     }
 
+    /**
+     *Removes an observer from the Observer List<br>
+     * Checks through the array and removes the instance of observer in the list
+     * @param o
+     */
     @Override
     public void removeObserver(Observer o) {
         int idx = observers.indexOf(o);
@@ -89,6 +133,11 @@ public class Medicine implements Observable,  java.io.Serializable {
         m.saveMedicine(this);
     }
 
+    /**
+     *Notifies all observers of a change of state<br>
+     * Checks through all of the observers in the list and calls there update method<br>
+     * The method passes through the current quantity and the current ID
+     */
     @Override
     public void notifyObserver() {
         for (Secretary s: observers) {
@@ -96,6 +145,16 @@ public class Medicine implements Observable,  java.io.Serializable {
             s.update(quantity, MedicineID);
         }
     }
+
+    /**
+     *Saving the medicine<br>
+     * The medicine that you want to save is passed in<br>
+     * Then the current ArrayList is read out and saved<br>
+     * Next a check is done to see if the medicine is already in the array, if it is then it is removed<br>
+     * Then the most up to date medicine is added<br>
+     * Then it is saved to the file
+     * @param m
+     */
     public void saveMedicine(Medicine m){
         ArrayList<Medicine> cur = readMedicine();
         try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Medicines.ser")){
@@ -114,6 +173,15 @@ public class Medicine implements Observable,  java.io.Serializable {
             i.printStackTrace();
         }
     }
+
+    /**
+     *gets a list of all the medicine<br>
+     * Creates a list of medicine and then populates it with the medicine in the file
+     * Returns the list
+     * 
+     * 
+     * @return
+     */
     public ArrayList<Medicine> readMedicine(){
         ArrayList<Medicine> meds = new ArrayList<>();
          try{
@@ -135,6 +203,10 @@ public class Medicine implements Observable,  java.io.Serializable {
         return meds;
     } 
 
+    /**
+     *
+     * @param o
+     */
     @Override
     public void registerObserver(Observer o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
