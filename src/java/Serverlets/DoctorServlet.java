@@ -70,6 +70,7 @@ public class DoctorServlet extends HttpServlet {
              System.out.println("Creeated Medicine" + medId);
              med.notifyObserver();
             med.saveMedicine(med);
+             response.sendRedirect("DoctorPanel.jsp");
           
             
         }
@@ -88,9 +89,11 @@ public class DoctorServlet extends HttpServlet {
         System.out.println("MADE Appointment");
         response.sendRedirect("DoctorPanel.jsp");
         }
-        
+          
+  
 
     }
+    
 
 
 

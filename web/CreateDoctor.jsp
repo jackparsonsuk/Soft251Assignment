@@ -12,7 +12,13 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Create User</title>
     </head>
-    <body>
+    <body style="text-align: center">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.jsp"> Home</a>
+            <a class="navbar-brand" href="login.jsp"> Login</a>
+
+            
+        </nav>
         <h1>Create User</h1>
         
         
@@ -25,7 +31,7 @@
                 <option value="S">Secretary</option>
                 
             </select><br>
-            <table border= "0">
+            <table border= "0" style="margin: 0px auto;">
                 <tbody>
                     <tr>
                         <tr>

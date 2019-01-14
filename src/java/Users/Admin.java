@@ -59,8 +59,9 @@ public class Admin extends User{
      * @param inAdmin
      */
     public void saveAdmin(Admin inAdmin){
+        String output = "C:\\Users\\Jack\\Desktop\\UpdatedSoft251\\Soft251Assignment\\Ser\\Admin.ser";
         ArrayList<Admin> cur = readAdmin();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Admin.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream(output)){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         cur.add(inAdmin);
         outs.writeObject(cur);
@@ -82,7 +83,7 @@ public class Admin extends User{
     ArrayList<Admin> admins = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Admin.ser");
+        FileInputStream fileIn = new FileInputStream("C:\\Users\\Jack\\Desktop\\UpdatedSoft251\\Soft251Assignment\\Ser\\Admin.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         admins = (ArrayList<Admin>)ins.readObject();
         ins.close();

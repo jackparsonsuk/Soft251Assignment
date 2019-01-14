@@ -113,6 +113,7 @@ public class PatientServlet extends HttpServlet {
             
             
         }
+        response.sendRedirect("PatientPanel.jsp");
     }
 
 

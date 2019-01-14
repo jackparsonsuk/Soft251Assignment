@@ -86,7 +86,7 @@ public class AppointmentServlet extends HttpServlet {
                 
             
             }
-            
+            response.sendRedirect("AppointmentPanel.jsp");
             
             
     }

@@ -8,7 +8,6 @@ package Serverlets;
 import Other.Medicine;
 import Users.Patient;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -81,7 +80,7 @@ public class Secretary extends HttpServlet {
             
         }
         
-
+response.sendRedirect("SecretaryPage.jsp");
          
         
         

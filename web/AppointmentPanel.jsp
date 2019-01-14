@@ -13,10 +13,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <title>JSP Page</title>
+        <title>Appointment</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body style="text-align: center">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.jsp"> Home</a>
+            <a class="navbar-brand" href="login.jsp"> Login</a>
+
+            
+        </nav>
+        <h1>Appointment</h1>
         
         
         <%
@@ -32,7 +38,7 @@
         
         
         
-        <h2> <%=realAp.getPat().getID()%>'S History</h2>
+        <h2> <%=realAp.getPat().getID()%>'s History</h2>
         
         <%
         ArrayList<Appointment> aps = ap.readAppointment();
@@ -41,6 +47,7 @@
                         %>
                         ID: <%=aps.get(i).getAppointmentID()%><br>
                         Doctor: <%=aps.get(i).getDoc().getID()%><br>
+                        Notes:
                         <%
                         
                         
@@ -50,7 +57,7 @@
                             
                             
                         %>
-                        Notes: <%=aps.get(i).getNotes().get(z)%><br>
+                         <%=aps.get(i).getNotes().get(z)%><br>
                         
                         <%
                         }
@@ -68,14 +75,14 @@
         
         <h2>Make notes</h2>
         <form action="AppointmentServlet">
-            <input type="text" name="note">
+            Note:<input type="text" name="note"><br>
             <input type="submit" value="Add note">
         </form>
         
         <h2> Prescribe Medicine</h2>
         <form action="AppointmentServlet">
         
-                        <Select name="selectMedicine">
+                        Medicine:<Select name="selectMedicine">
             <%
                 Medicine m = new Medicine();
                 ArrayList<Medicine> meds = m.readMedicine();
@@ -83,7 +90,7 @@
                     
                 
             %>
-               Select Medicine:     
+  
 
             
                <option value="<%=meds.get(i).getMedicineID()%>"><%=meds.get(i).getMedicineID()%>,  Quantity: <%=meds.get(i).getQuantity()%> </option>
@@ -92,9 +99,9 @@
             
             <%
             }    
-            %><br><br>
-            </select>
-            Select Dosage:<input type="text" name="Dosage"><br><br>
+            %>
+            </select><br>
+            Select Dosage:<input type="text" name="Dosage"><br>
             Select Quantity:<input type="text" name="Quant">
             <input type="Submit" value="Prescribe">
             

@@ -17,12 +17,18 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body style="text-align: center">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.jsp"> Home</a>
+            <a class="navbar-brand" href="login.jsp"> Login</a>
+
+            
+        </nav>
+        <h1>Admin</h1>
         <h2> Remove a Doctor</h2>
         <form action="AdminServlet" >
         
-            <select name="Doctors">
+            Pick doctor:<select name="Doctors">
                 <%
                     Doctor d = new Doctor();
                     ArrayList<Doctor> docs = d.readDoctor();
@@ -40,14 +46,14 @@
                 
                 
                 
-            </select>
+            </select><br>
         <input type="submit" value="Remove"/>
         
     </form>
         <h2> Remove a Secretary</h2>
         <form action="AdminServlet">
         
-            <select name="Secs">
+            Pick secretary:<select name="Secs">
                 <%
                     Secretary sec = new Secretary();
                     ArrayList<Secretary> secs = sec.readSecretary();
@@ -62,11 +68,12 @@
                 
                 %>
                 
-            </select>
+            </select><br>
+           
         <input type="submit" value="Remove"/>
         
     </form>
-                
+                 <h2> Doctors ratings</h2>
                 <table class="table">
                     <tr>
                         <th>
@@ -76,7 +83,7 @@
                             Rating
                         </th>
                         <th>
-                            Comments
+                            Feedback
                         </th> 
                         <th>
                             Comments
@@ -133,7 +140,7 @@
                 
                 <form action="AdminServlet">
                     <h2>Give feedback to doctor</h2>
-            <select name="Docs">
+            Select Doctor: <select name="Docs">
                 <%
 
                     for (int l = 0; l < docs.size(); l++) {
@@ -147,8 +154,8 @@
                 
                 %>
                 
-            </select>
-                <input type="text" name="feedDoc">
+            </select><br>
+                Feedback:<input type="text" name="feedDoc"><br>
         <input type="submit" value="Give Feedback"/>
         
     </form>

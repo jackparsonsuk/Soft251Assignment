@@ -17,19 +17,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Paitent</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
-    <body>
+    <body style="text-align: center">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.jsp"> Home</a>
+            <a class="navbar-brand" href="login.jsp"> Login</a>
+
+            
+        </nav>
         <h1>Paitent</h1>
         
         
-        <h2>Doctors</h2>
-                <form action="
-                      
-        PatientServlet" >
-        <%=session.getAttribute("ID")%>
-            <select name="Doctors">
+        <h2>Create Appointment</h2>
+                <form action="PatientServlet" >
+
+            Doctor:<select name="Doctors">
                 <%          Doctor d = new Doctor();
                             ArrayList<Doctor> docs = d.readDoctor();
                     for (int i = 0; i < docs.size(); i++) {
@@ -46,8 +50,8 @@
                 
                 
                 
-            </select>
-                <input type="Date" name="dateOfAp">
+            </select><br>
+                Date:<input type="Date" name="dateOfAp"><br>
         <input type="submit" value="Create Appointment"/>
         
                 </form>
@@ -98,7 +102,7 @@
         <h2> Rate your doctor</h2>
         <form action="PatientServlet">
             
-             <select name="RateDoc">
+             Doctor:<select name="RateDoc">
                 <%
 
                     ArrayList<Doctor> newDocs = d.readDoctor();
@@ -113,12 +117,27 @@
                 
                 %>
             
-             </select>
-                <input type="number" min="1" max="10" value="1" name="Rating">
+             </select><br>
+                Rating: <input type="number" min="1" max="10" value="1" name="Rating">/10 <br>
                 <input type="submit" value="Rate"/>
         </form>
                 <h2>Your appointments</h2>
-                <table>
+                <table class="table">
+                     <tr>
+                        <th>
+                            Doctor
+                        </th>
+                        <th>
+                            Patient
+                        </th>
+                        <th>
+                            Date Of appointment
+                        </th>
+
+                        
+                    </tr>
+                    
+                    
                     <%
                         Appointment tempAP = new Appointment();
                         ArrayList<Appointment> aps = tempAP.readAppointment();
@@ -127,17 +146,19 @@
                                     
                                 
                         %>
+                        <tr>
                     <th>
                         <%= aps.get(i).getDoc().getID()%>
                     </th>
-                    <td>
+                    <th>
                         <%= aps.get(i).getPat().getID() %>
                         
-                    </td>
-                    <td>
+                    </th>
+                    <th>
                         <%= aps.get(i).getDateOfAp()%>
                         
-                    </td>
+                    </th>
+                        </tr>
                     <%
                         }
                             }
@@ -147,7 +168,18 @@
                 </table>
                         
                         <h2> Your prescriptions</h2>
+                         <table class="table">
+                     <tr>
+                        <th>
+                            Medicine ID
+                        </th>
+                        <th>
+                            Dosage
+                        </th>
+    
+
                         
+                    </tr>
                         <%
                         
                         Patient p = new Patient();
@@ -157,12 +189,23 @@
                         for(int z = 0; z<meds.size(); z++){
 
                         %>
-                        <%=meds.get(z).getMedicineID()%><br>
+                        
+                         <tr>
+                             <th>
+                        <%=meds.get(z).getMedicineID()%>
+                             </th>
+                             <th>
                         <%=meds.get(z).getDosage()%>
+                        
+                             </th>
+                        
+                         </tr>
                         
                         <%
                             }
                         %>
+                        
+                         </table>
                         <h2> Review your doctor!</h2>
                         <form action="PatientServlet">
             

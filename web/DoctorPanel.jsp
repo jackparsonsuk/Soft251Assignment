@@ -16,7 +16,13 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <title>Doctor</title>
     </head>
-    <body>
+    <body style="text-align: center">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.jsp"> Home</a>
+            <a class="navbar-brand" href="login.jsp"> Login</a>
+
+            
+        </nav>
         <h1>Doctor</h1>
 
         <% 
@@ -44,7 +50,7 @@
 
 
         <form action="DoctorServlet">
-            <select name="SelectedAp">
+            Appointment:<select name="SelectedAp">
             <%
              Appointment ap = new Appointment();
             ArrayList<Appointment> aps = ap.readAppointment();
@@ -70,19 +76,20 @@
             
             %>
             
-            </select>
+            </select><br>
             <Input type="Submit" value="View Appointment">
         </form>
         <h2>Create new medicine</h2>
         
         <form action="DoctorServlet">
-            <input type ="text" name="MedName">
-            <input type="text" name="Dosage">
+            Medicine Name: <input type ="text" name="MedName"><br>
+            Dosage: <input type="text" name="Dosage"><br><br>
             <input type="Submit" value="Create Medicine">
         </form>
+                <h2>Proprose new appointment</h2>
                         <form action="DoctorServlet" >
 
-            <select name="Patient">
+            Patient:<select name="Patient">
                 <%          Patient p = new Patient();
                             ArrayList<Patient> pats = p.readPatient();
                     for (int i = 0; i < pats.size(); i++) {
@@ -99,8 +106,8 @@
                 
                 
                 
-            </select>
-                <input type="Date" name="dateOfAp">
+            </select><br>
+                Date:<input type="Date" name="dateOfAp"><br>
         <input type="submit" value="Propose Appointment"/>
         
                 </form>

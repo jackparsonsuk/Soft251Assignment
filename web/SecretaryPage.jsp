@@ -16,10 +16,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <title>JSP Page</title>
+        <title>Secretary</title>
     </head>
-    <body>
-       
+    <body style="text-align: center">
+               <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.jsp"> Home</a>
+            <a class="navbar-brand" href="login.jsp"> Login</a>
+
+            
+        </nav>
   <% 
         Secretary sec = new Secretary();
         Secretary realSec = sec.getSecretary(session.getAttribute("ID").toString());
@@ -33,7 +38,7 @@
         <h2> Approve a patient</h2>
         <form action="Secretary">
             
-             <select name="unApproved">
+             Pick Patient:<select name="unApproved">
         <% 
             Patient p = new Patient();
             ArrayList<Patient> pats = p.readPatient();
@@ -53,7 +58,7 @@
             }
         
         %>
-        </select>  
+        </select><br>  
         
         <input type="submit" value="Approve"/>
         </form>
@@ -62,7 +67,7 @@
                 <h2> Approve an Appointment</h2>
         <form action="Secretary" >
             
-             <select name="unAppoinments">
+             Pick appointment:<select name="unAppoinments">
         <% 
             Appointment ap = new Appointment();
                 ArrayList<Appointment> apss =ap.readAppointment();
@@ -81,13 +86,14 @@
             }
         
         %>
-        </select>  
+        </select> <br> 
         
         <input type="submit" value="Approve"/>
         </form>
+        <h2> Terminate account</h2>
                 <form action="Secretary" >
             
-             <select name="wantsTermination">
+             Select Patient:<select name="wantsTermination">
         <% 
             ArrayList<Patient> ps = p.readPatient();
             for(int f = 0; f< ps.size(); f++){
@@ -105,7 +111,7 @@
             }
         
         %>
-        </select>  
+        </select><br>  
         
         <input type="submit" value="Remove"/>
         </form>
@@ -116,7 +122,7 @@
                 </form>
                 <form action="Secretary" >
             
-             <select name="restockMed">
+             Select Medicine:<select name="restockMed">
         <% 
             Medicine m = new Medicine();
             ArrayList<Medicine> meds = m.readMedicine();
@@ -142,7 +148,7 @@
             }
         
         %>
-        </select>  
+        </select> <br> 
         
         <input type="submit" value="Restock"/>
         </form>
