@@ -155,7 +155,7 @@ public class Appointment implements java.io.Serializable{
     public void SaveAppointment(Appointment ap){
         
          ArrayList<Appointment> cur = readAppointment();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Appointments.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("Appointments.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
             for (int i = 0; i < cur.size(); i++) {
                 if (cur.get(i).getAppointmentID().equals(ap.getAppointmentID())) {
@@ -185,7 +185,7 @@ public class Appointment implements java.io.Serializable{
     ArrayList<Appointment> appointments = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Appointments.ser");
+        FileInputStream fileIn = new FileInputStream("Appointments.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         appointments = (ArrayList<Appointment>)ins.readObject();
         fileIn.close();

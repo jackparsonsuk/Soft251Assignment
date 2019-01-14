@@ -157,7 +157,7 @@ public class Medicine implements Observable,  java.io.Serializable {
      */
     public void saveMedicine(Medicine m){
         ArrayList<Medicine> cur = readMedicine();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Medicines.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("Medicines.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
             for (int i = 0; i < cur.size(); i++) {
                 if (cur.get(i).getMedicineID().equals(m.getMedicineID())) {
@@ -185,7 +185,7 @@ public class Medicine implements Observable,  java.io.Serializable {
     public ArrayList<Medicine> readMedicine(){
         ArrayList<Medicine> meds = new ArrayList<>();
          try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Medicines.ser");
+        FileInputStream fileIn = new FileInputStream("Medicines.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         meds = (ArrayList<Medicine>)ins.readObject();
         fileIn.close();

@@ -103,7 +103,7 @@ public class Review implements java.io.Serializable{
     public void SaveReview(Review inReview){
        
        ArrayList<Review> cur = readReview();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Reviews.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("Reviews.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         cur.add(inReview);
         outs.writeObject(cur);
@@ -125,7 +125,7 @@ public class Review implements java.io.Serializable{
        ArrayList<Review> reviews = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Reviews.ser");
+        FileInputStream fileIn = new FileInputStream("Reviews.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         reviews = (ArrayList<Review>)ins.readObject();
         fileIn.close();

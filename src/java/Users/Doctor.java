@@ -144,7 +144,7 @@ public class Doctor extends User implements java.io.Serializable{
      */
     public void saveDoctor(Doctor inDoctor){
         ArrayList<Doctor> cur = readDoctor();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("Doctors.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         
             for (int i = 0; i < cur.size(); i++) {
@@ -172,7 +172,7 @@ public class Doctor extends User implements java.io.Serializable{
     ArrayList<Doctor> doctors = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser");
+        FileInputStream fileIn = new FileInputStream("Doctors.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         doctors = (ArrayList<Doctor>)ins.readObject();
         fileIn.close();
@@ -207,7 +207,7 @@ public class Doctor extends User implements java.io.Serializable{
             }
         }
     
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Doctors.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("Doctors.ser")){
                     ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         
                     outs.writeObject(doctors);

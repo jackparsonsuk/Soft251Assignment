@@ -107,7 +107,7 @@ public class Secretary extends User implements Observer {
             }
         }
     
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Secretarys.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("Secretarys.ser")){
                     ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         
                     outs.writeObject(secs);
@@ -131,7 +131,7 @@ public class Secretary extends User implements Observer {
      */
     public void saveSecretary(Secretary inSecretary){
         ArrayList<Secretary> cur = readSecretary();
-        try(FileOutputStream fileOut = new FileOutputStream("C:/Users/Jack/Desktop/Netbeansout/Secretarys.ser")){
+        try(FileOutputStream fileOut = new FileOutputStream("Secretarys.ser")){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
         for (int i = 0; i < cur.size(); i++) {
                if (cur.get(i).getID().equals(inSecretary.getID())) {
@@ -158,7 +158,7 @@ public class Secretary extends User implements Observer {
     ArrayList<Secretary> secretarys = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:/Users/Jack/Desktop/Netbeansout/Secretarys.ser");
+        FileInputStream fileIn = new FileInputStream("Secretarys.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         secretarys = (ArrayList<Secretary>)ins.readObject();
         ins.close();

@@ -59,7 +59,7 @@ public class Admin extends User{
      * @param inAdmin
      */
     public void saveAdmin(Admin inAdmin){
-        String output = "C:\\Users\\Jack\\Desktop\\UpdatedSoft251\\Soft251Assignment\\Ser\\Admin.ser";
+        String output = "Admin.ser";
         ArrayList<Admin> cur = readAdmin();
         try(FileOutputStream fileOut = new FileOutputStream(output)){
         ObjectOutputStream outs = new ObjectOutputStream(fileOut);
@@ -83,7 +83,7 @@ public class Admin extends User{
     ArrayList<Admin> admins = new ArrayList<>();
     
     try{
-        FileInputStream fileIn = new FileInputStream("C:\\Users\\Jack\\Desktop\\UpdatedSoft251\\Soft251Assignment\\Ser\\Admin.ser");
+        FileInputStream fileIn = new FileInputStream("Admin.ser");
         ObjectInputStream ins = new ObjectInputStream(fileIn);
         admins = (ArrayList<Admin>)ins.readObject();
         ins.close();
