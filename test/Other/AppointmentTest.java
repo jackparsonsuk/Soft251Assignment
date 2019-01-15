@@ -5,6 +5,9 @@
  */
 package Other;
 
+import Users.Doctor;
+import Users.Patient;
+import junit.framework.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,113 +16,43 @@ import static org.junit.Assert.*;
  * @author Jack
  */
 public class AppointmentTest {
-    
+    Appointment ap  = new Appointment();
+    Doctor doc = new Doctor();
+    Patient pat = new Patient();
     public AppointmentTest() {
+        ap.setAppointmentID("TESTAP");
+        doc.setID("TESTDOC");
+        pat.setID("TESTPAT");
+        ap.setDoc(doc);
+        ap.setPat(pat);
+        ap.SaveAppointment(ap);
     }
 
-    /**
-     * Test of getDateOfAp method, of class Appointment.
-     */
-    @Test
-    public void testGetDateOfAp() {
-    }
-
-    /**
-     * Test of setDateOfAp method, of class Appointment.
-     */
-    @Test
-    public void testSetDateOfAp() {
-    }
-
-    /**
-     * Test of getAppointmentID method, of class Appointment.
-     */
-    @Test
-    public void testGetAppointmentID() {
-    }
-
-    /**
-     * Test of setAppointmentID method, of class Appointment.
-     */
-    @Test
-    public void testSetAppointmentID() {
-    }
-
-    /**
-     * Test of getDoc method, of class Appointment.
-     */
-    @Test
-    public void testGetDoc() {
-    }
-
-    /**
-     * Test of setDoc method, of class Appointment.
-     */
-    @Test
-    public void testSetDoc() {
-    }
-
-    /**
-     * Test of getPat method, of class Appointment.
-     */
-    @Test
-    public void testGetPat() {
-    }
-
-    /**
-     * Test of setPat method, of class Appointment.
-     */
-    @Test
-    public void testSetPat() {
-    }
-
-    /**
-     * Test of getNotes method, of class Appointment.
-     */
-    @Test
-    public void testGetNotes() {
-    }
-
-    /**
-     * Test of setNotes method, of class Appointment.
-     */
-    @Test
-    public void testSetNotes() {
-    }
-
-    /**
-     * Test of getApproved method, of class Appointment.
-     */
-    @Test
-    public void testGetApproved() {
-    }
-
-    /**
-     * Test of setApproved method, of class Appointment.
-     */
-    @Test
-    public void testSetApproved() {
-    }
+  
 
     /**
      * Test of SaveAppointment method, of class Appointment.
      */
     @Test
     public void testSaveAppointment() {
+        Boolean aprove = Boolean.TRUE;
+        ap.setApproved(Boolean.TRUE);
+        ap.SaveAppointment(ap);
+        Appointment updatedAp = ap.getAppointment(ap.getAppointmentID());
+        assertEquals(aprove,updatedAp.getApproved());
+    
     }
 
-    /**
-     * Test of readAppointment method, of class Appointment.
-     */
-    @Test
-    public void testReadAppointment() {
-    }
 
     /**
      * Test of getAppointment method, of class Appointment.
      */
     @Test
     public void testGetAppointment() {
+        Appointment getAp = ap.getAppointment(ap.AppointmentID);
+        String expectedId = ap.getAppointmentID();
+        assertEquals(expectedId, getAp.getAppointmentID());
+        
     }
     
 }

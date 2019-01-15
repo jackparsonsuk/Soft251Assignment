@@ -5,6 +5,7 @@
  */
 package Other;
 
+import Users.Doctor;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,71 +14,29 @@ import static org.junit.Assert.*;
  * @author Jack
  */
 public class ReviewTest {
+    Review re = new Review();
+    Doctor doc = new Doctor();
+    
     
     public ReviewTest() {
+        doc.setID("TESTDOC");
+        String message = "TESTMESSAGE";
+        re.setDoc(doc);
+        re.setMessage(message);
+        re.SaveReview(re);
     }
 
-    /**
-     * Test of getMessage method, of class Review.
-     */
-    @Test
-    public void testGetMessage() {
-    }
-
-    /**
-     * Test of setMessage method, of class Review.
-     */
-    @Test
-    public void testSetMessage() {
-    }
-
-    /**
-     * Test of getDoc method, of class Review.
-     */
-    @Test
-    public void testGetDoc() {
-    }
-
-    /**
-     * Test of setDoc method, of class Review.
-     */
-    @Test
-    public void testSetDoc() {
-    }
-
-    /**
-     * Test of getPat method, of class Review.
-     */
-    @Test
-    public void testGetPat() {
-    }
-
-    /**
-     * Test of setPat method, of class Review.
-     */
-    @Test
-    public void testSetPat() {
-    }
-
-    /**
-     * Test of SaveReview method, of class Review.
-     */
+   
     @Test
     public void testSaveReview() {
+        String expectedMessage ="CHANGEDMESSAGE";
+        re.setMessage(expectedMessage);
+        re.SaveReview(re);
+ 
+        assertEquals(expectedMessage, re.Message);
+        
+        
     }
 
-    /**
-     * Test of readReview method, of class Review.
-     */
-    @Test
-    public void testReadReview() {
-    }
-
-    /**
-     * Test of getDoctorReview method, of class Review.
-     */
-    @Test
-    public void testGetDoctorReview() {
-    }
     
 }

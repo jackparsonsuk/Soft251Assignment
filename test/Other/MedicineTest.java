@@ -5,6 +5,7 @@
  */
 package Other;
 
+import Users.Secretary;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,106 +14,56 @@ import static org.junit.Assert.*;
  * @author Jack
  */
 public class MedicineTest {
+    Medicine med = new Medicine();
+    Secretary sec= new Secretary();
     
     public MedicineTest() {
+    
+        med.setMedicineID("MTEST");
+        med.setQuantity(50);
+        med.saveMedicine(med);
+        
     }
 
-    /**
-     * Test of Medicine method, of class Medicine.
-     */
-    @Test
-    public void testMedicine() {
-    }
-
-    /**
-     * Test of getMedicineID method, of class Medicine.
-     */
-    @Test
-    public void testGetMedicineID() {
-    }
-
-    /**
-     * Test of setMedicineID method, of class Medicine.
-     */
-    @Test
-    public void testSetMedicineID() {
-    }
-
-    /**
-     * Test of getQuantity method, of class Medicine.
-     */
-    @Test
-    public void testGetQuantity() {
-    }
-
-    /**
-     * Test of setQuantity method, of class Medicine.
-     */
-    @Test
-    public void testSetQuantity() {
-    }
-
-    /**
-     * Test of getDosage method, of class Medicine.
-     */
-    @Test
-    public void testGetDosage() {
-    }
-
-    /**
-     * Test of setDosage method, of class Medicine.
-     */
-    @Test
-    public void testSetDosage() {
-    }
-
-    /**
-     * Test of getMedicine method, of class Medicine.
-     */
-    @Test
-    public void testGetMedicine() {
-    }
-
-    /**
-     * Test of addObserrver method, of class Medicine.
-     */
+  
     @Test
     public void testAddObserrver() {
+        med.addObserrver(sec);
+
+        assertEquals(med.observers.size(), 1);
+        
     }
 
-    /**
-     * Test of removeObserver method, of class Medicine.
-     */
-    @Test
-    public void testRemoveObserver() {
-    }
 
     /**
      * Test of notifyObserver method, of class Medicine.
      */
+
+        /**
+     * Test of removeObserver method, of class Medicine.
+     */
     @Test
-    public void testNotifyObserver() {
+    public void testRemoveObserver() {
+        med.removeObserver(sec);
+        
+        
+        assertEquals(med.observers.size(), 0);
     }
+
 
     /**
      * Test of saveMedicine method, of class Medicine.
      */
     @Test
     public void testSaveMedicine() {
+        String expectedDosage ="TESTDOSAGE";
+        med.setDosage("TESTDOSAGE");
+        med.saveMedicine(med);
+        Medicine updateMed = med.getMedicine(med.getMedicineID());
+        assertEquals(expectedDosage, updateMed.getDosage());
     }
 
-    /**
-     * Test of readMedicine method, of class Medicine.
-     */
-    @Test
-    public void testReadMedicine() {
-    }
 
-    /**
-     * Test of registerObserver method, of class Medicine.
-     */
-    @Test
-    public void testRegisterObserver() {
-    }
-    
+
+
 }
