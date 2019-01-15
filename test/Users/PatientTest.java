@@ -5,6 +5,7 @@
  */
 package Users;
 
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,50 +14,12 @@ import static org.junit.Assert.*;
  * @author Jack
  */
 public class PatientTest {
+    Patient realPat = new Patient();
     
     public PatientTest() {
-    }
-
-    /**
-     * Test of getWantsTermination method, of class Patient.
-     */
-    @Test
-    public void testGetWantsTermination() {
-    }
-
-    /**
-     * Test of setWantsTermination method, of class Patient.
-     */
-    @Test
-    public void testSetWantsTermination() {
-    }
-
-    /**
-     * Test of isApproved method, of class Patient.
-     */
-    @Test
-    public void testIsApproved() {
-    }
-
-    /**
-     * Test of setApproved method, of class Patient.
-     */
-    @Test
-    public void testSetApproved() {
-    }
-
-    /**
-     * Test of setPrescription method, of class Patient.
-     */
-    @Test
-    public void testSetPrescription() {
-    }
-
-    /**
-     * Test of viewPrescription method, of class Patient.
-     */
-    @Test
-    public void testViewPrescription() {
+    realPat.setID("TESTPAT");
+    realPat.setPassword("TEST");
+    realPat.savePatient(realPat);
     }
 
     /**
@@ -64,13 +27,12 @@ public class PatientTest {
      */
     @Test
     public void testSavePatient() {
-    }
-
-    /**
-     * Test of readPatient method, of class Patient.
-     */
-    @Test
-    public void testReadPatient() {
+        String expectedPassword = "ChangedPassword";
+        realPat.setPassword(expectedPassword);
+        realPat.savePatient(realPat);
+        Patient gottenPat = realPat.getPaitent("TESTPAT");
+        Assert.assertEquals(expectedPassword, gottenPat.getPassword());
+        
     }
 
     /**
@@ -78,6 +40,9 @@ public class PatientTest {
      */
     @Test
     public void testGetPaitent() {
+        Patient getPat = realPat.getPaitent(realPat.getID());
+        String expectedId = realPat.getID();
+        Assert.assertEquals(getPat.ID, expectedId);
     }
     
 }
